@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  root :to => 'landing#index'
+
   get 'auth/index'
+  get 'auth/create'
+  post 'auth/index'
 
   get 'landing/index'
-
-  root 'landing#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
