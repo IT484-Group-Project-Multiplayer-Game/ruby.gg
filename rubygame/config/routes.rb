@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'auth/index'
+
   get 'landing/index'
 
   root 'landing#index'
