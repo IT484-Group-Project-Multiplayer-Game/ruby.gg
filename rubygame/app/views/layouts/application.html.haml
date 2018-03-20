@@ -37,7 +37,8 @@
           %a{:class => "mdl-navigation__link", :href => "#"} Link 1
           %a{:class => "mdl-navigation__link", :href => "#"} Link 2
         %nav{:class => "mdl-navigation"}
-          %a{:class => "mdl-navigation__link", :href => "/auth/index"} Log in
+          -#%a{:class => "mdl-navigation__link", :href => "/auth/index"} Log in
+          = link_to "Log in", auth_index_path, :class => "mdl-navigation__link"
 
       -# Main
       %main{:class => "mdl-layout__content"}

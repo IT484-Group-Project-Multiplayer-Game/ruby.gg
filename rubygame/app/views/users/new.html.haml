@@ -3,10 +3,10 @@
   %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
 
   %div{:class => "mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"}
-    %a{:class => "mdl-button mdl-js-button mdl-js-ripple-effect", :href => "/auth/index"} I have an account
+    = link_to "I have an account", auth_index_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
     %a{:class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"} I am a new user
 
-    = form_tag auth_index_path, :method => :post do
+    = form_tag user, :method => :post do
       %div{:class => "mdl-textfield mdl-js-textfield"}
         %input{:class => "mdl-textfield__input", :type => "text", :id => "user_email"}
         %label{:class => "mdl-textfield__label", :for => "user_email"} email address
