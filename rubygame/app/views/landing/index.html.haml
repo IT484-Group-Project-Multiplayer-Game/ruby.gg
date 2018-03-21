@@ -1,4 +1,12 @@
--#Main content
-%main{:class =>"mdl-layout__content"}
-  %div{:class => "page-content"}
-    -#Your content goes here
+%div{:class => "mdl-grid content-center"}
+
+  %div{:class => "mdl-cell mdl-cell--12-col"}
+
+    %form{:action => "#"}
+      %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
+        %input{:class => "mdl-textfield__input", :type => "text", :id => "search-summoner"}
+        %label{:class => "mdl-textfield__label", :for => "search-summoner"}
+          -# The following icon weirdly creates a space if included.
+          -# If we want the icon, this should be revisited later
+          -#%i{:class => "material-icons"} search
+          %span Search for a summoner
