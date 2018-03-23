@@ -1,3 +1,60 @@
 // Place all the styles related to the Landing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$ruby-red: #f54336;
+$ruby-dark-red: #cf372c;
+
+.summoner-card {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  background: $ruby-dark-red;
+  transition: box-shadow .3s;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #ffffff;
+  display: flex;
+
+  &:hover {
+    box-shadow: 0 0 5px -1px rgba(0,0,0,.1), 0 6px 10px 0 rgba(0,0,0,.2), 0 1px 18px 0 rgba(0,0,0,.1);
+    transition: box-shadow .3s;
+  }
+
+  .summoner-rank {
+    font-size: 2em;
+    margin: 0;
+  }
+
+  .summoner-icon {
+    // The styling for this as well as the champion icons will change according to how data is passed from the API
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: lightgray;
+    margin: 0 10px;
+  }
+
+  .summoner-left-contents {
+    .summoner-name {
+      font-size: 1.25em;
+      margin: 5px 20px 0 0;
+    }
+    .summoner-description {
+      margin: 0;
+      opacity: 0.8;
+    }
+  }
+
+  .summoner-right-contents {
+    flex-grow: 2;
+
+    .summoner-mastery-champion {
+      float: right;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background: lightgray;
+      margin: 0 5px;
+    }
+  }
+}
