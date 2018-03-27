@@ -2,6 +2,16 @@
   %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
 
   %div{:class => "mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"}
+    -# Search a summonder
+    %form{:action => "#"}
+      %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
+        %input{:class => "mdl-textfield__input", :type => "text", :id => "search-summoner"}
+        %label{:class => "mdl-textfield__label", :for => "search-summoner"}
+          -# The following icon weirdly creates a space if included.
+          -# If we want the icon, this should be revisited later
+          -#%i{:class => "material-icons"} search
+          %span Search for a summoner
+
     -# For each summoner
     %div{:class => "summoner-card"}
       %p{:class => "summoner-rank"} 1
