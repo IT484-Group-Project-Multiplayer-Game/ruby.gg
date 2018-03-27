@@ -1,7 +1,8 @@
 %div{:class => "mdl-grid content-center"}
+  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
 
-  %div{:class => "mdl-cell mdl-cell--12-col"}
-
+  %div{:class => "mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"}
+    -# Search a summonder
     %form{:action => "#"}
       %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
         %input{:class => "mdl-textfield__input", :type => "text", :id => "search-summoner"}
@@ -10,3 +11,18 @@
           -# If we want the icon, this should be revisited later
           -#%i{:class => "material-icons"} search
           %span Search for a summoner
+
+    -# For each summoner
+    %div{:class => "summoner-card"}
+      %p{:class => "summoner-rank"} 1
+      %div{:class => "summoner-icon", :style => "background-image: url('')"}
+      %div{:class => "summoner-left-contents"}
+        %p{:class => "summoner-name"} SUMMONER
+        %p{:class => "summoner-description"} Lv 35
+      %div{:class => "summoner-right-contents"}
+        -# From top 3 to top 1 (in that order)
+        %div{:class => "summoner-mastery-champion", :style => "background-image: url('')"}
+        %div{:class => "summoner-mastery-champion", :style => "background-image: url('')"}
+        %div{:class => "summoner-mastery-champion", :style => "background-image: url('')"}
+
+  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
