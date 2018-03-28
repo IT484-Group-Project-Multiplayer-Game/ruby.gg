@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
-  root :to => 'landing#index'
+  #root :to => 'landing#index'
+   root :to =>  'users#new'
 
   get 'auth/index'
   get 'auth/create'
