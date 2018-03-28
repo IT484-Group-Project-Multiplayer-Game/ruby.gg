@@ -1,3 +1,4 @@
+
 %div{:class => "mdl-grid content-center"}
   -# Search a summoner
   %div{:class => "group"}
@@ -10,40 +11,45 @@
           %i{:class => "material-icons"} search
           %span Search for a summoner
 
-  -# For each summoner
-  %div{:class => "summoner-card"}
-    %div{:class => "summoner-icon", :style => "background-image: url('')"}
-
-    %div{:class => "group"}
-      %p{:class => "summoner-name"} Huni
-      %p{:class => "summoner-level"} Lv 35
-
-    %div{:class => "group"}
-      %p{:class => "summoner-rank"} Challenger
-      %p{:class => "summoner-lp"} 23 LP
-      %div{:class => "summoner-win-loss"}
-        -# the width would be the count/total
-        - win = 30
-        - loss = 32
-        - total = win + loss
-        - win_rate = (win.to_f/total) * 100
-        %p{:class => "summoner-win-count", :style => "width: #{win_rate}%"} #{win}W
-        %p{:class => "summoner-loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
-
-    %div{:class => "group--champions"}
-      -# From top 3 to top 1 (in that order)
-      -# For each loop here
-      %div{:class => "summoner-mastery-champion"}
-        %p{:class => "summoner-mastery-champion-level"} 7
-        %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
-        %p{:class => "summoner-mastery-champion-points"} 550k
-
-      %div{:class => "summoner-mastery-champion"}
-        %p{:class => "summoner-mastery-champion-level"} 8
-        %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
-        %p{:class => "summoner-mastery-champion-points"} 550k
-
-      %div{:class => "summoner-mastery-champion"}
-        %p{:class => "summoner-mastery-champion-level"} 9
-        %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
-        %p{:class => "summoner-mastery-champion-points"} 550k
+  -@challengerinfo.each do |x|
+    - ign = x[:user][:name]
+    - level = x[:user][:summonerLevel]
+    - icon = @client.summoner.icon(x[:user][:profileIconId])
+    - rank = x[:solo][:tier]
+    - lp = x[:solo][:leaguePoints]
+    %div{:class => "summoner-card"}
+      %div{:class => "summoner-icon", :style => "background-image: url('#{icon}')"}
+  
+      %div{:class => "group"}
+        %p{:class => "summoner-name"} #{ign}
+        %p{:class => "summoner-level"} #{level}
+  
+      %div{:class => "group"}
+        %p{:class => "summoner-rank"} #{rank}
+        %p{:class => "summoner-lp"} #{lp} LP
+        %div{:class => "summoner-win-loss"}
+          -# the width would be the count/total
+          - win = x[:solo][:wins]
+          - loss = x[:solo][:losses]
+          - total = win + loss
+          - win_rate = (win.to_f/total) * 100
+          %p{:class => "summoner-win-count", :style => "width: #{win_rate}%"} #{win}W
+          %p{:class => "summoner-loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
+  
+      %div{:class => "group--champions"}
+        -# From top 3 to top 1 (in that order)
+        -# For each loop here
+        %div{:class => "summoner-mastery-champion"}
+          %p{:class => "summoner-mastery-champion-level"} 7
+          %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
+          %p{:class => "summoner-mastery-champion-points"} 550k
+  
+        %div{:class => "summoner-mastery-champion"}
+          %p{:class => "summoner-mastery-champion-level"} 8
+          %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
+          %p{:class => "summoner-mastery-champion-points"} 550k
+  
+        %div{:class => "summoner-mastery-champion"}
+          %p{:class => "summoner-mastery-champion-level"} 9
+          %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
+          %p{:class => "summoner-mastery-champion-points"} 550k
