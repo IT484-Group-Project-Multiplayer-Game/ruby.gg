@@ -4,57 +4,152 @@
 
 $ruby-red: #f54336;
 $ruby-dark-red: #cf372c;
+$ruby-yellow: #ffd83f;
 
+$breakpoint-mobile: 768px;
+
+// ------------------------------------------------------------------------ //
+// --------------------------- LAYOUT ------------------------------------- //
+.content-center {
+  text-align: center;
+  max-width: 600px;
+
+  > .group {
+    margin: 50px auto 30px auto;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    max-width: 100%;
+  }
+}
+
+
+// ------------------------------------------------------------------------ //
+// --------------------------- FORMS -------------------------------------- //
+.mdl-textfield__input {
+  border: 1px solid rgba(0,0,0,.12) !important;
+  padding: 10px 10px 7px 10px !important;
+}
+
+.mdl-textfield__label {
+  top: 30px !important;
+  padding: 0 10px;
+
+  > .material-icons {
+    position: absolute;
+    right: 10px;
+    top: -3px;
+  }
+}
+
+.mdl-button[type="submit"] {
+  display: block;
+  margin: auto;
+}
+
+
+// ------------------------------------------------------------------------ //
+// --------------------------- SUMMONER CARD ------------------------------ //
 .summoner-card {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
   background: $ruby-dark-red;
   transition: box-shadow .3s;
   align-items: center;
-  padding: 10px 20px;
+  position: relative;
   cursor: pointer;
   color: #ffffff;
+  padding: 15px;
+  width: 100%;
   display: flex;
+  text-align: left;
+  justify-content: space-between;
+
+  @media screen and (max-width: $breakpoint-mobile) {
+    padding-bottom: 110px;
+    flex-wrap: wrap;
+  }
 
   &:hover {
     box-shadow: 0 0 5px -1px rgba(0,0,0,.1), 0 6px 10px 0 rgba(0,0,0,.2), 0 1px 18px 0 rgba(0,0,0,.1);
     transition: box-shadow .3s;
   }
 
-  .summoner-rank {
-    font-size: 2em;
-    margin: 0;
-  }
-
   .summoner-icon {
     // The styling for this as well as the champion icons will change according to how data is passed from the API
-    height: 50px;
-    width: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
+    margin: 0 0 0 10px;
     background: lightgray;
-    margin: 0 10px;
   }
 
-  .summoner-left-contents {
+  [class*="group"] {
+    margin-left: 10px;
+
+    p {
+      margin: 0;
+    }
+
     .summoner-name {
       font-size: 1.25em;
-      margin: 5px 20px 0 0;
     }
-    .summoner-description {
-      margin: 0;
-      opacity: 0.8;
-    }
-  }
 
-  .summoner-right-contents {
-    flex-grow: 2;
+    .summoner-level {
+      opacity: 0.7;
+    }
+
+    .summoner-rank {
+      display: inline-block;
+      margin: 0 15px 5px 0;
+    }
+
+    .summoner-lp {
+      display: inline-block;
+      opacity: 0.7;
+    }
+
+    .summoner-win-loss {
+      text-align: center;
+      background: #fff;
+      display: flex;
+      height: 20px;
+      color: #000;
+      width: 100%;
+
+      .summoner-win-count {
+        background: $ruby-yellow;
+        font-size: 0.8em;
+        height: 100%;
+      }
+      .summoner-loss-count {
+        font-size: 0.8em;
+      }
+    }
 
     .summoner-mastery-champion {
-      float: right;
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-      background: lightgray;
       margin: 0 5px;
+      float: left;
+
+      .summoner-mastery-champion-level {
+        text-align: center;
+      }
+      .summoner-mastery-champion-icon {
+        background: lightgray;
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+      }
+      .summoner-mastery-champion-points {
+        text-align: center;
+      }
+    }
+
+    &[class*="--champions"] {
+      @media screen and (max-width: $breakpoint-mobile) {
+        position: absolute;
+        right: 20px;
+        top: 90px;
+      }
     }
   }
 }

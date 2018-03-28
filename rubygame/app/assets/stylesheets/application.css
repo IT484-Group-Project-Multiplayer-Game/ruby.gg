@@ -13,16 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-.content-center {
-    text-align: center;
-}
-
-.content-center .mdl-button[type="submit"] {
-    display: block;
-    margin: auto;
-}
-
-.content-center .center-textfield .mdl-textfield__label {
-    text-align: center;
-}
