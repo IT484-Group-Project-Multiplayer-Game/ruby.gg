@@ -1,20 +1,15 @@
 %div{:class => "mdl-grid content-center"}
-
-  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
-
-  %div{:class => "mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"}
+  %div{:class => "group"}
     %a{:class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"} I have an account
     = link_to "I am a new user", new_user_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
 
-    = form_tag auth_index_path, :method => :post do
-      %div{:class => "mdl-textfield mdl-js-textfield"}
-        %input{:class => "mdl-textfield__input", :type => "text", :id => "user_email"}
-        %label{:class => "mdl-textfield__label", :for => "user_email"} email address
+  = form_tag auth_index_path, :method => :post do
+    %div{:class => "mdl-textfield mdl-js-textfield"}
+      %input{:class => "mdl-textfield__input", :type => "text", :id => "user_email"}
+      %label{:class => "mdl-textfield__label", :for => "user_email"} email address
 
-      %div{:class => "mdl-textfield mdl-js-textfield"}
-        %input{:class => "mdl-textfield__input", :type => "password", :id => "user_password"}
-        %label{:class => "mdl-textfield__label", :for => "user_password"} ********
+    %div{:class => "mdl-textfield mdl-js-textfield"}
+      %input{:class => "mdl-textfield__input", :type => "password", :id => "user_password"}
+      %label{:class => "mdl-textfield__label", :for => "user_password"} ********
 
-      %input{:class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", :type => "submit", :value => "Log in"}
-
-  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
+    %input{:class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", :type => "submit", :value => "Log in"}

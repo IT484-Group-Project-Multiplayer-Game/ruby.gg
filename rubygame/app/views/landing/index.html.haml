@@ -1,28 +1,49 @@
 %div{:class => "mdl-grid content-center"}
-  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
-
-  %div{:class => "mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"}
-    -# Search a summonder
+  -# Search a summoner
+  %div{:class => "group"}
     %form{:action => "#"}
       %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
         %input{:class => "mdl-textfield__input", :type => "text", :id => "search-summoner"}
         %label{:class => "mdl-textfield__label", :for => "search-summoner"}
           -# The following icon weirdly creates a space if included.
           -# If we want the icon, this should be revisited later
-          -#%i{:class => "material-icons"} search
+          %i{:class => "material-icons"} search
           %span Search for a summoner
 
-    -# For each summoner
-    %div{:class => "summoner-card"}
-      %p{:class => "summoner-rank"} 1
-      %div{:class => "summoner-icon", :style => "background-image: url('')"}
-      %div{:class => "summoner-left-contents"}
-        %p{:class => "summoner-name"} SUMMONER
-        %p{:class => "summoner-description"} Lv 35
-      %div{:class => "summoner-right-contents"}
-        -# From top 3 to top 1 (in that order)
-        %div{:class => "summoner-mastery-champion", :style => "background-image: url('')"}
-        %div{:class => "summoner-mastery-champion", :style => "background-image: url('')"}
-        %div{:class => "summoner-mastery-champion", :style => "background-image: url('')"}
+  -# For each summoner
+  %div{:class => "summoner-card"}
+    %div{:class => "summoner-icon", :style => "background-image: url('')"}
 
-  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
+    %div{:class => "group"}
+      %p{:class => "summoner-name"} Huni
+      %p{:class => "summoner-level"} Lv 35
+
+    %div{:class => "group"}
+      %p{:class => "summoner-rank"} Challenger
+      %p{:class => "summoner-lp"} 23 LP
+      %div{:class => "summoner-win-loss"}
+        -# the width would be the count/total
+        - win = 30
+        - loss = 32
+        - total = win + loss
+        - win_rate = (win.to_f/total) * 100
+        %p{:class => "summoner-win-count", :style => "width: #{win_rate}%"} #{win}W
+        %p{:class => "summoner-loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
+
+    %div{:class => "group--champions"}
+      -# From top 3 to top 1 (in that order)
+      -# For each loop here
+      %div{:class => "summoner-mastery-champion"}
+        %p{:class => "summoner-mastery-champion-level"} 7
+        %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
+        %p{:class => "summoner-mastery-champion-points"} 550k
+
+      %div{:class => "summoner-mastery-champion"}
+        %p{:class => "summoner-mastery-champion-level"} 8
+        %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
+        %p{:class => "summoner-mastery-champion-points"} 550k
+
+      %div{:class => "summoner-mastery-champion"}
+        %p{:class => "summoner-mastery-champion-level"} 9
+        %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('')"}
+        %p{:class => "summoner-mastery-champion-points"} 550k
