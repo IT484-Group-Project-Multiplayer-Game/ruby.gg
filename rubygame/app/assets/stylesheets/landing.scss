@@ -68,6 +68,7 @@ $breakpoint-mobile: 768px;
   justify-content: space-between;
   background: $ruby-dark-red;
   transition: box-shadow .3s;
+  text-decoration: none;
   align-items: center;
   position: relative;
   border-radius: 2px;
@@ -81,7 +82,6 @@ $breakpoint-mobile: 768px;
   @include card-hover-styles;
 
   @media screen and (max-width: $breakpoint-mobile) {
-    padding-bottom: 110px;
     flex-wrap: wrap;
   }
 
@@ -95,6 +95,10 @@ $breakpoint-mobile: 768px;
 
   [class*="group"] {
     width: calc((100% - 75px) / 3);
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      width: 50%;
+    }
 
     p {
       margin: 0;
@@ -153,14 +157,6 @@ $breakpoint-mobile: 768px;
       .summoner-mastery-champion-points {
         text-align: center;
         font-size: 0.7em;
-      }
-    }
-
-    &[class*="--champions"] {
-      @media screen and (max-width: $breakpoint-mobile) {
-        position: absolute;
-        right: 20px;
-        top: 90px;
       }
     }
   }
