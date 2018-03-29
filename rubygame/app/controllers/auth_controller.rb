@@ -14,7 +14,7 @@ class AuthController < ApplicationController
         user=User.find_by(name:params[:user_email])
     if user and user.authenticate(params[:user_password])
         sessions[:user_id]=user.id
-        redirect_to admin_url
+        redirect_to auth_url
     else
         redirect_to login_url, alert:"invaldi username or"
         
