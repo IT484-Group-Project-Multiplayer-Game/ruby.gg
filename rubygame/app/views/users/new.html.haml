@@ -2,7 +2,7 @@
   %div{:class => "group"}
     = link_to "I have an account", auth_index_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
     %a{:class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"} I am a new user
-
+  
   = form_tag User, :method => :post do
     %div{:class => "mdl-textfield mdl-js-textfield"}
       %input{:class => "mdl-textfield__input", :type => "text", :id => "user_email"}
@@ -17,3 +17,13 @@
       %label{:class => "mdl-textfield__label", :for => "user_password_confirm"} confirm password
 
     %input{:class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", :type => "submit", :value => "Create account"}
+
+  
+  %div
+  - if current_user
+    Signed in as
+    = succeed "!" do
+      %strong= current_user.name
+    = link_to "Sign out", signout_path, id: "sign_out"
+  - else
+    = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
