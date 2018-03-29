@@ -13,7 +13,9 @@ class SummonerController < ApplicationController
     @challengerinfo.push(@client.summoner.find('zedberg'))
     @challengerinfo.push(@client.summoner.find('owlfile'))
   end
-  
-  
-  
+
+  def show
+
+  end
+
 end
