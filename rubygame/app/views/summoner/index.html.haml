@@ -1,4 +1,3 @@
-
 %div{:class => "mdl-grid content-center"}
   -# Search a summoner
   %div{:class => "group"}
@@ -17,7 +16,8 @@
     - tier = rankInfo[:tier]
     - rank = rankInfo[:rank]
     - lp = rankInfo[:leaguePoints]
-    %div{:class => "summoner-card"}
+
+    %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
       %div{:class => "summoner-icon", :style => "background-image: url('#{icon}')"}
   
       %div{:class => "group"}

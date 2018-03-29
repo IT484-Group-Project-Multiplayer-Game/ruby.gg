@@ -14,6 +14,13 @@ $breakpoint-mobile: 768px;
   background-position: center;
 }
 
+@mixin card-hover-styles() {
+  &:hover {
+    box-shadow: 0 0 5px -1px rgba(0,0,0,.3), 0 6px 10px 0 rgba(0,0,0,.3), 0 1px 18px 0 rgba(0,0,0,.1);
+    transition: box-shadow .3s;
+  }
+}
+
 // ------------------------------------------------------------------------ //
 // --------------------------- LAYOUT ------------------------------------- //
 .content-center {
@@ -71,15 +78,11 @@ $breakpoint-mobile: 768px;
   padding: 10px;
   display: flex;
   width: 100%;
+  @include card-hover-styles;
 
   @media screen and (max-width: $breakpoint-mobile) {
     padding-bottom: 110px;
     flex-wrap: wrap;
-  }
-
-  &:hover {
-    box-shadow: 0 0 5px -1px rgba(0,0,0,.3), 0 6px 10px 0 rgba(0,0,0,.3), 0 1px 18px 0 rgba(0,0,0,.1);
-    transition: box-shadow .3s;
   }
 
   .summoner-icon {
@@ -160,5 +163,14 @@ $breakpoint-mobile: 768px;
         top: 90px;
       }
     }
+  }
+}
+
+
+// ------------------------------------------------------------------------ //
+// --------------------------- SUMMONER SHOW ------------------------------ //
+.summoner-show-page {
+  [class*="section"] {
+
   }
 }
