@@ -41,6 +41,12 @@
           -#%a{:class => "mdl-navigation__link", :href => "/auth/index"} Log in
           = link_to "Log in", auth_index_path, :class => "mdl-navigation__link"
 
+      -# this goes just inside %body:
+      - if flash[:notice]
+        #notice.message= flash[:notice]
+      - elsif flash[:warning]
+        #warning.message= flash[:warning]
+
       -# Main
       %main{:class => "mdl-layout__content"}
         %div{:class => "page-content"}
