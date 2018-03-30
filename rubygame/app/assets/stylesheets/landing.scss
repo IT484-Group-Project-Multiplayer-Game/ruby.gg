@@ -19,6 +19,19 @@
   }
 }
 
+[class*="container"] {
+  &[class*="--narrow"] {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+
+    &[class*="flex"] {
+      justify-content: space-between;
+      display: flex;
+    }
+  }
+}
+
 // ------------------------------------------------------------------------ //
 // --------------------------- FORMS -------------------------------------- //
 .mdl-textfield__input {
