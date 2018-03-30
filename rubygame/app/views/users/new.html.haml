@@ -19,11 +19,13 @@
     %input{:class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", :type => "submit", :value => "Create account"}
 
   
-  %div
+  %div{:class => "mdl-textfield mdl-js-textfield"}
   - if current_user
     Signed in as
     = succeed "!" do
       %strong= current_user.name
     = link_to "Sign out", signout_path, id: "sign_out"
   - else
-    = link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in"
+    = link_to image_tag('google_button.png'), "/auth/google_oauth2", id: "sign_in"
+    
+    
