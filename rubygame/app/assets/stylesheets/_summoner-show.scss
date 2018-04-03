@@ -5,22 +5,64 @@
 .summoner-show-page {
   [class*="section"] {
     justify-content: space-between;
+    padding: 30px 50px;
     display: flex;
+    @media screen and (max-width: $breakpoint-mobile) {
+      padding: 30px 20px;
+    }
 
     &[class*="--intro"] {
-      color: #fff;
-      background: gray;
+      padding-top: 60px;
       position: relative;
-      padding: 50px 50px 30px 50px;
-      // if we are gonna include an image
-      //@include background-image-styles;
+      color: #fff;
+      @include background-image-styles;
+      background-size: cover;
+
+      &:after {
+        background: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: "";
+        z-index: 1;
+        left: 0;
+        top: 0;
+      }
+    }
+    &[class*="--kda-champs"] {
+      .container--narrow--flex {
+        align-items: center;
+      }
     }
 
     [class*="group"] {
+      &[class*="--info"] {
+        flex: 2;
+
+        .name {
+          font-size: 2em;
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+          }
+        }
+        .rank {
+          font-size: 1.25em;
+          margin-bottom: 0;
+          @media screen and (max-width: $breakpoint-mobile) {
+            font-size: 1em;
+          }
+        }
+      }
+
       &[class*="--icon"] {
         position: relative;
         margin-right: 50px;
         width: 90px;
+        @media screen and (max-width: $breakpoint-mobile) {
+          margin-right: 15px;
+          width: 70px;
+        }
 
         .level {
           border: 1px solid gold;
@@ -36,26 +78,59 @@
       }
 
       [class*="icon"] {
-        width: 90px;
-        height: 90px;
-        background: white;
         border-radius: 50%;
+        background: gray;
+        height: 90px;
+        width: 90px;
         @include background-image-styles;
+        @media screen and (max-width: $breakpoint-mobile) {
+          height: 70px;
+          width: 70px;
+        }
 
         &[class*="--smaller"] {
-          width: 50px;
           height: 50px;
+          width: 50px;
+          margin: 5px;
+          @media screen and (max-width: $breakpoint-mobile) {
+            height: 40px;
+            width: 40px;
+          }
         }
       }
 
-      &[class*="--info"] {
-        flex: 2;
+      .win-loss {
+        text-align: center;
+        background: $ruby-red;
+        display: flex;
+        height: 17px;
+        width: 130px;
 
-        .name {
-          font-size: 2em;
+        > p {
+          line-height: 1.5em;
+          font-size: 0.8em;
         }
-        .rank {
-          font-size: 1.25em;
+
+        .win-count {
+          background: $ruby-yellow;
+          height: 100%;
+          color: #000;
+        }
+        .loss-count {
+          color: #fff;
+        }
+      }
+
+      .kda {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .most-played-champion {
+        float: left;
+        .win-loss-count {
+          font-size: $font-small;
+          text-align: center;
         }
       }
     }

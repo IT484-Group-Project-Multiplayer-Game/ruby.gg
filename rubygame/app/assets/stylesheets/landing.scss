@@ -23,6 +23,7 @@
   &[class*="--narrow"] {
     max-width: 1200px;
     margin: auto;
+    z-index: 10;
     width: 100%;
 
     &[class*="flex"] {
@@ -58,8 +59,9 @@
 [class*="button"] {
   &[class*="--follow"] {
     position: absolute;
+    color: #fff;
     right: 5px;
-    top: 5px;
+    top: 10px;
   }
 }
 
