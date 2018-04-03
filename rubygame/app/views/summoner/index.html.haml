@@ -14,7 +14,7 @@
     - icon = @client.summoner.icon(x[:profileIconId])
     - rankInfo = @client.summoner.get_solo(x[:id])
     - tier = rankInfo[:tier]
-    - rank = rankInfo[:tier]
+    - rank = rankInfo[:rank]
     - lp = rankInfo[:leaguePoints]
 
     %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
@@ -25,7 +25,7 @@
         %p{:class => "summoner-level"} LVL : #{level}
   
       %div{:class => "group"}
-        %p{:class => "summoner-rank"} #{tier}
+        %p{:class => "summoner-rank"} #{tier} #{rank}
         %p{:class => "summoner-lp"} #{lp} LP
         %div{:class => "summoner-win-loss"}
           -# the width would be the count/total
