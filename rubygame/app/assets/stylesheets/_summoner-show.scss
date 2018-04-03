@@ -1,0 +1,63 @@
+@import 'variables';
+
+// ------------------------------------------------------------------------ //
+// --------------------------- SUMMONER SHOW ------------------------------ //
+.summoner-show-page {
+  [class*="section"] {
+    justify-content: space-between;
+    display: flex;
+
+    &[class*="--intro"] {
+      color: #fff;
+      background: gray;
+      position: relative;
+      padding: 50px 50px 30px 50px;
+      // if we are gonna include an image
+      //@include background-image-styles;
+    }
+
+    [class*="group"] {
+      &[class*="--icon"] {
+        position: relative;
+        margin-right: 50px;
+        width: 90px;
+
+        .level {
+          border: 1px solid gold;
+          margin: -15px auto;
+          line-height: 1.5em;
+          text-align: center;
+          background: white;
+          display: block;
+          height: 20px;
+          width: 40px;
+          color: #000;
+        }
+      }
+
+      [class*="icon"] {
+        width: 90px;
+        height: 90px;
+        background: white;
+        border-radius: 50%;
+        @include background-image-styles;
+
+        &[class*="--smaller"] {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      &[class*="--info"] {
+        flex: 2;
+
+        .name {
+          font-size: 2em;
+        }
+        .rank {
+          font-size: 1.25em;
+        }
+      }
+    }
+  }
+}
