@@ -59,8 +59,9 @@
 [class*="button"] {
   &[class*="--follow"] {
     position: absolute;
+    color: #fff;
     right: 5px;
-    top: 5px;
+    top: 10px;
   }
 }
 

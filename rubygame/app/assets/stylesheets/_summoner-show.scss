@@ -5,13 +5,14 @@
 .summoner-show-page {
   [class*="section"] {
     justify-content: space-between;
-    padding: 50px 50px 30px 50px;
+    padding: 30px 50px;
     display: flex;
     @media screen and (max-width: $breakpoint-mobile) {
-      padding: 50px 20px 30px 20px;
+      padding: 30px 20px;
     }
 
     &[class*="--intro"] {
+      padding-top: 60px;
       position: relative;
       color: #fff;
       @include background-image-styles;
@@ -28,8 +29,32 @@
         top: 0;
       }
     }
+    &[class*="--kda-champs"] {
+      .container--narrow--flex {
+        align-items: center;
+      }
+    }
 
     [class*="group"] {
+      &[class*="--info"] {
+        flex: 2;
+
+        .name {
+          font-size: 2em;
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+          }
+        }
+        .rank {
+          font-size: 1.25em;
+          margin-bottom: 0;
+          @media screen and (max-width: $breakpoint-mobile) {
+            font-size: 1em;
+          }
+        }
+      }
+
       &[class*="--icon"] {
         position: relative;
         margin-right: 50px;
@@ -96,30 +121,16 @@
         }
       }
 
+      .kda {
+        text-align: center;
+        margin-top: 10px;
+      }
+
       .most-played-champion {
         float: left;
         .win-loss-count {
           font-size: $font-small;
           text-align: center;
-        }
-      }
-
-      &[class*="--info"] {
-        flex: 2;
-
-        .name {
-          font-size: 2em;
-          @media screen and (max-width: $breakpoint-mobile) {
-            margin-bottom: 10px;
-            font-size: 1.5em;
-          }
-        }
-        .rank {
-          font-size: 1.25em;
-          margin-bottom: 0;
-          @media screen and (max-width: $breakpoint-mobile) {
-            font-size: 1em;
-          }
         }
       }
     }
