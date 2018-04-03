@@ -1,6 +1,7 @@
 %div{:class => "summoner-show-page"}
 
-    %div{:class => "section--intro"}
+    -# change the background image of section
+    %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
         %div{:class => "container--narrow--flex"}
             %div{:class => "group--icon"}
                 %div{:class => "icon"}
@@ -18,5 +19,29 @@
             %a{:class => "mdl-button mdl-js-button button--follow"} Follow
 
     %div{:class => "section--kda-champs"}
+        %div{:class => "container--narrow--flex"}
+            %div{:class => "group"}
+                %div{:class => "win-loss"}
+                    -# the width would be the count/total
+                    - win = 23
+                    - loss = 12
+                    - total = win + loss
+                    - win_rate = (win.to_f/total) * 100
+                    %p{:class => "win-count", :style => "width: #{win_rate}%"} 34W
+                    %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} 23L
+                %p{:class => "kda"}
+
+            -# for each most played champion...
+            %div{:class => "group"}
+                %div{:class => "most-played-champion"}
+                    %div{:class => "icon--smaller"}
+                    %p{:class => "win-loss-count"} 32W 53L
+                -# delete these two once for loop is created
+                %div{:class => "most-played-champion"}
+                    %div{:class => "icon--smaller"}
+                    %p{:class => "win-loss-count"} 32W 53L
+                %div{:class => "most-played-champion"}
+                    %div{:class => "icon--smaller"}
+                    %p{:class => "win-loss-count"} 32W 53L
 
     %div{:class => "section--recent-games"}
