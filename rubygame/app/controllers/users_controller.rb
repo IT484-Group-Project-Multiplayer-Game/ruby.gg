@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     end
 
     def show
+        @user ||= User.find(session[:user_id]) if session[:user_id]
+        rescue ActiveRecord::RecordNotFound
     end
 
     def update

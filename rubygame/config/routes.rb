@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/show'
 
   resources :users
+  get 'users/show'
   root :to => 'landing#index'
 
   get 'auth/index'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   post 'auth/index'
 
   get 'landing/index'
+  
   
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
