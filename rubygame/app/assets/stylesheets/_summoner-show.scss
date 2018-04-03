@@ -13,7 +13,6 @@
 
     &[class*="--intro"] {
       padding-top: 60px;
-      position: relative;
       color: #fff;
       @include background-image-styles;
       background-size: cover;
@@ -27,6 +26,10 @@
         z-index: 1;
         left: 0;
         top: 0;
+      }
+
+      .container--narrow--flex {
+        position: relative;
       }
     }
     &[class*="--kda-champs"] {
