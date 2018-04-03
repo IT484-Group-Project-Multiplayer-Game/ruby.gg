@@ -13,18 +13,14 @@ class SummonerController < ApplicationController
     # @challengerinfo.push(@client.summoner.find('zedberg'))
     # @challengerinfo.push(@client.summoner.find('owlfile'))
   end
-<<<<<<< HEAD
   
   def search
     
   end
   
-  
-=======
 
   def show
 
   end
 
->>>>>>> 0072f23f3f82430d8af01210bfac3642955a1630
 end
