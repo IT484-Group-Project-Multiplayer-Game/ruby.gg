@@ -8,6 +8,12 @@ $ruby-yellow: #ffd83f;
 
 $breakpoint-mobile: 768px;
 
+@mixin background-image-styles() {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 // ------------------------------------------------------------------------ //
 // --------------------------- LAYOUT ------------------------------------- //
 .content-center {
@@ -52,39 +58,44 @@ $breakpoint-mobile: 768px;
 // --------------------------- SUMMONER CARD ------------------------------ //
 .summoner-card {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  justify-content: space-between;
   background: $ruby-dark-red;
   transition: box-shadow .3s;
+  text-decoration: none;
   align-items: center;
   position: relative;
+  border-radius: 2px;
+  text-align: left;
   cursor: pointer;
   color: #ffffff;
-  padding: 15px;
-  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
   display: flex;
-  text-align: left;
-  justify-content: space-between;
+  width: 100%;
 
   @media screen and (max-width: $breakpoint-mobile) {
-    padding-bottom: 110px;
     flex-wrap: wrap;
   }
 
   &:hover {
-    box-shadow: 0 0 5px -1px rgba(0,0,0,.1), 0 6px 10px 0 rgba(0,0,0,.2), 0 1px 18px 0 rgba(0,0,0,.1);
+    box-shadow: 0 0 5px -1px rgba(0,0,0,.3), 0 6px 10px 0 rgba(0,0,0,.3), 0 1px 18px 0 rgba(0,0,0,.1);
     transition: box-shadow .3s;
   }
 
   .summoner-icon {
-    // The styling for this as well as the champion icons will change according to how data is passed from the API
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 71px;
     border-radius: 50%;
-    margin: 0 0 0 10px;
-    background: lightgray;
+    margin: 0 15px 0 10px;
+    @include background-image-styles;
   }
 
   [class*="group"] {
-    margin-left: 10px;
+    width: calc((100% - 75px) / 3);
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      width: 50%;
+    }
 
     p {
       margin: 0;
@@ -112,17 +123,18 @@ $breakpoint-mobile: 768px;
       text-align: center;
       background: #fff;
       display: flex;
-      height: 20px;
+      height: 17px;
+      width: 130px;
       color: #000;
-      width: 100%;
+
+      > p {
+        line-height: 1.5em;
+        font-size: 0.8em;
+      }
 
       .summoner-win-count {
         background: $ruby-yellow;
-        font-size: 0.8em;
         height: 100%;
-      }
-      .summoner-loss-count {
-        font-size: 0.8em;
       }
     }
 
@@ -134,21 +146,14 @@ $breakpoint-mobile: 768px;
         text-align: center;
       }
       .summoner-mastery-champion-icon {
-        background: lightgray;
+        @include background-image-styles;
         border-radius: 50%;
         height: 40px;
         width: 40px;
       }
       .summoner-mastery-champion-points {
         text-align: center;
-      }
-    }
-
-    &[class*="--champions"] {
-      @media screen and (max-width: $breakpoint-mobile) {
-        position: absolute;
-        right: 20px;
-        top: 90px;
+        font-size: 0.7em;
       }
     }
   }
