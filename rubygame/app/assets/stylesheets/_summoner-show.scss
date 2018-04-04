@@ -12,6 +12,7 @@
     }
 
     &[class*="--intro"] {
+      position: relative;
       padding-top: 60px;
       color: #fff;
       @include background-image-styles;
@@ -67,16 +68,33 @@
           width: 70px;
         }
 
+        > img {
+          position: absolute;
+          height: 106px;
+          z-index: 1;
+          left: -8px;
+          top: -8px;
+        }
+
+        .icon {
+          position: absolute;
+          border-radius: 0;
+          left: 0;
+          top: 0;
+        }
+
         .level {
           border: 1px solid gold;
-          margin: -15px auto;
           line-height: 1.5em;
           text-align: center;
           background: white;
-          display: block;
+          position: absolute;
+          bottom: -5px;
           height: 20px;
           width: 40px;
           color: #000;
+          left: 25px;
+          z-index: 2;
         }
       }
 

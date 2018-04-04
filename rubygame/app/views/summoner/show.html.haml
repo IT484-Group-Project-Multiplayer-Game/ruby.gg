@@ -1,9 +1,12 @@
 %div{:class => "summoner-show-page"}
 
+    - tier = "CHALLENGER"
+
     -# change the background image of section
     %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
         %div{:class => "container--narrow--flex"}
             %div{:class => "group--icon"}
+                %img{:src => asset_path("ranks-borders/#{tier}.png")}/
                 %div{:class => "icon"}
                 %p{:class => "level"} 37
 
