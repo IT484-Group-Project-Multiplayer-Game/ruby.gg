@@ -1,0 +1,47 @@
+%div{:class => "summoner-show-page"}
+
+    -# change the background image of section
+    %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
+        %div{:class => "container--narrow--flex"}
+            %div{:class => "group--icon"}
+                %div{:class => "icon"}
+                %p{:class => "level"} 37
+
+            %div{:class => "group--info"}
+                %p{:class => "name"} SKT T1 Faker
+                %p{:class => "rank"} Platinum 3
+                %p{:class => "lp"} 23 LP
+
+            %div{:class => "group"}
+                %div{:class => "icon--smaller"} rank
+                %div{:class => "icon--smaller"} position
+
+            %a{:class => "mdl-button mdl-js-button button--follow"} Follow
+
+    %div{:class => "section--kda-champs"}
+        %div{:class => "container--narrow--flex"}
+            %div{:class => "group"}
+                %div{:class => "win-loss"}
+                    -# the width would be the count/total
+                    - win = 23
+                    - loss = 12
+                    - total = win + loss
+                    - win_rate = (win.to_f/total) * 100
+                    %p{:class => "win-count", :style => "width: #{win_rate}%"} 34W
+                    %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} 23L
+                %p{:class => "kda"} 3.7:2:5 KDA (37%)
+
+            -# for each most played champion...
+            %div{:class => "group"}
+                %div{:class => "most-played-champion"}
+                    %div{:class => "icon--smaller"}
+                    %p{:class => "win-loss-count"} 32W 53L
+                -# delete these two once for loop is created
+                %div{:class => "most-played-champion"}
+                    %div{:class => "icon--smaller"}
+                    %p{:class => "win-loss-count"} 32W 53L
+                %div{:class => "most-played-champion"}
+                    %div{:class => "icon--smaller"}
+                    %p{:class => "win-loss-count"} 32W 53L
+
+    %div{:class => "section--recent-games"}
