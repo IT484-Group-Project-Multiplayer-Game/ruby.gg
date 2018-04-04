@@ -1,6 +1,7 @@
 %div{:class => "summoner-show-page"}
 
     - tier = "CHALLENGER"
+    - rank = 1
 
     -# change the background image of section
     %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
@@ -12,11 +13,11 @@
 
             %div{:class => "group--info"}
                 %p{:class => "name"} SKT T1 Faker
-                %p{:class => "rank"} Platinum 3
+                %p{:class => "rank"} #{tier} #{rank}
                 %p{:class => "lp"} 23 LP
 
             %div{:class => "group"}
-                %div{:class => "icon--smaller"} rank
+                %img{:src => asset_path("rank-icons/#{tier}_#{rank}.png"), :class => "rank-image"}/
                 %div{:class => "icon--smaller"} position
 
             %a{:class => "mdl-button mdl-js-button button--follow"} Follow
