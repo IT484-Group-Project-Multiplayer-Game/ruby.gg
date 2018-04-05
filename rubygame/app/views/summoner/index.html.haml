@@ -1,0 +1,66 @@
+- cache 'summonerIndex', expires_in: 1.day do
+  %div{:class => "mdl-grid content-center"}
+    -# Search a summoner
+    %div{:class => "group"}
+      %form{:action => "#"}
+        %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
+          %input{:class => "mdl-textfield__input", :type => "text", :id => "search-summoner"}
+          %label{:class => "mdl-textfield__label", :for => "search-summoner"}
+            %i{:class => "material-icons"} search
+            %span Search for a summoner
+  
+    -@challengerinfo.each do |x|
+      - ign = x[:name]
+      - level = x[:summonerLevel]
+      - icon = @client.summoner.icon(x[:profileIconId])
+      - rankInfo = @client.summoner.get_solo(x[:id])
+      - tier = rankInfo[:tier]
+      - rank = rankInfo[:rank]
+      - lp = rankInfo[:leaguePoints]
+  
+      %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
+        %div{:class => "summoner-icon", :style => "background-image: url('#{icon}')"}
+    
+        %div{:class => "group"}
+          %p{:class => "summoner-name"} #{ign}
+          %p{:class => "summoner-level"} LVL : #{level}
+    
+        %div{:class => "group"}
+          %p{:class => "summoner-rank"} #{tier} #{rank}
+          %p{:class => "summoner-lp"} #{lp} LP
+          %div{:class => "summoner-win-loss"}
+            -# the width would be the count/total
+            - win = rankInfo[:wins]
+            - loss = rankInfo[:losses]
+            - total = win + loss
+            - win_rate = (win.to_f/total) * 100
+            %p{:class => "summoner-win-count", :style => "width: #{win_rate}%"} #{win}W
+            %p{:class => "summoner-loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
+    
+        %div{:class => "group--champions"}
+          - champion_mastery = @client.summoner.champion_mastery(x[:id], 3)
+          - firstIcon = @client.champion.icon(@client.champion.get_name(champion_mastery[0]['championId']))
+          - secondIcon = @client.champion.icon(@client.champion.get_name(champion_mastery[1]['championId']))
+          - thirdIcon = @client.champion.icon(@client.champion.get_name(champion_mastery[2]['championId']))
+          - firstLevel = champion_mastery[0]['championLevel']
+          - firstMastery = @client.champion.points(champion_mastery[0] ['championPoints'])
+          - secondLevel = champion_mastery [1]['championLevel']
+          - secondMastery = @client.champion.points(champion_mastery[1] ['championPoints'])
+          - thirdLevel = champion_mastery[2]['championLevel']
+          - thirdMastery = @client.champion.points(champion_mastery[2] ['championPoints'])
+  
+          -# For each loop here
+          %div{:class => "summoner-mastery-champion"}
+            %p{:class => "summoner-mastery-champion-level"} #{firstLevel}
+            %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('#{firstIcon}')"}
+            %p{:class => "summoner-mastery-champion-points"} #{firstMastery}
+            
+          %div{:class => "summoner-mastery-champion"}
+            %p{:class => "summoner-mastery-champion-level"} #{secondLevel}
+            %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('#{secondIcon}')"}
+            %p{:class => "summoner-mastery-champion-points"} #{secondMastery}
+    
+          %div{:class => "summoner-mastery-champion"}
+            %p{:class => "summoner-mastery-champion-level"} #{thirdLevel}
+            %div{:class => "summoner-mastery-champion-icon", :style => "background-image: url('#{thirdIcon}')"}
+            %p{:class => "summoner-mastery-champion-points"} #{thirdMastery}
