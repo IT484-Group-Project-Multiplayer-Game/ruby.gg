@@ -2,6 +2,10 @@
 
     - tier = "CHALLENGER"
     - rank = 1
+    - win = 23
+    - loss = 12
+    - total = win + loss
+    - win_rate = (win.to_f/total) * 100
 
     -# change the background image of section
     %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
@@ -27,10 +31,6 @@
             %div{:class => "group"}
                 %div{:class => "win-loss"}
                     -# the width would be the count/total
-                    - win = 23
-                    - loss = 12
-                    - total = win + loss
-                    - win_rate = (win.to_f/total) * 100
                     %p{:class => "win-count", :style => "width: #{win_rate}%"} 34W
                     %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} 23L
                 %p{:class => "kda"} 3.7:2:5 KDA (37%)
@@ -49,3 +49,20 @@
                     %p{:class => "win-loss-count"} 32W 53L
 
     %div{:class => "section--recent-games"}
+        -# for each recently played games
+        - gameStatus = "victory"
+        - gameLevel = 10
+        - gameType = "Normals Summoner's Rift"
+        %div{:class => "recent-game-card--#{gameStatus}"}
+            %div{:class => "group--icon"}
+                %div{:class => "icon--circle"}
+                %p{:class => "level"} #{gameLevel}
+
+            %div{:class => "group"}
+                %p{:class => "game-type"} #{gameType}
+                %div{:class => "group"}
+                    %div{:class => "icon--smaller"} summoners 1
+                    %div{:class => "icon--smaller"} summoners 2
+                %div{:class => "group"}
+                    %div{:class => "icon--smaller"} mastery 1
+                    %div{:class => "icon--smaller"} mastery 2

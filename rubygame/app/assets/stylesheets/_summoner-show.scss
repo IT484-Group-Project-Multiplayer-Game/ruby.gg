@@ -38,6 +38,19 @@
         align-items: center;
       }
     }
+    &[class*="--recent-games"] {
+      [class*="recent-game-card"] {
+        padding: 10px;
+        width: 100%;
+
+        &[class*="--victory"] {
+          background-color: $color-victory;
+        }
+        &[class*="--defeat"] {
+          background-color: $color-defeat;
+        }
+      }
+    }
 
     [class*="group"] {
       &[class*="--info"] {
@@ -76,11 +89,15 @@
           top: -8px;
         }
 
-        .icon {
+        [class*="icon"] {
           position: absolute;
           border-radius: 0;
           left: 0;
           top: 0;
+
+          &[class*="--circle"] {
+            border-radius: 50%;
+          }
         }
 
         .level {
@@ -126,7 +143,7 @@
 
       .win-loss {
         text-align: center;
-        background: $ruby-red;
+        background: $color-defeat;
         display: flex;
         height: 17px;
         width: 130px;
@@ -137,7 +154,7 @@
         }
 
         .win-count {
-          background: $ruby-yellow;
+          background: $color-victory;
           height: 100%;
           color: #000;
         }
