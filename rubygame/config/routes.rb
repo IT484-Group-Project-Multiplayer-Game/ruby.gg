@@ -1,27 +1,11 @@
 Rails.application.routes.draw do
-  
-
-  get 'home/show'
-
   resources :users
-
-  get 'users/show'
-
   root :to => 'summoner#index'
 
   get 'auth/index'
   get 'auth/create'
   post 'auth/index'
 
-  
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
-
-  resources :sessions, only: [:create, :destroy]
-  resource :home, only: [:show]
-
-  
   get 'summoner/index'
   get 'summoner/:ign' => 'summoner#show'
 
