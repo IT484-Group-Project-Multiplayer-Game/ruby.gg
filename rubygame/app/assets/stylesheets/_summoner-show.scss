@@ -38,19 +38,6 @@
         align-items: center;
       }
     }
-    &[class*="--recent-games"] {
-      [class*="recent-game-card"] {
-        padding: 10px;
-        width: 100%;
-
-        &[class*="--victory"] {
-          background-color: $color-victory;
-        }
-        &[class*="--defeat"] {
-          background-color: $color-defeat;
-        }
-      }
-    }
 
     [class*="group"] {
       &[class*="--info"] {
