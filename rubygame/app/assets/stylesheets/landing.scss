@@ -2,17 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$ruby-red: #f54336;
-$ruby-dark-red: #cf372c;
-$ruby-yellow: #ffd83f;
-
-$breakpoint-mobile: 768px;
-
-@mixin background-image-styles() {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+@import 'variables';
 
 // ------------------------------------------------------------------------ //
 // --------------------------- LAYOUT ------------------------------------- //
@@ -29,11 +19,24 @@ $breakpoint-mobile: 768px;
   }
 }
 
+[class*="container"] {
+  &[class*="--narrow"] {
+    max-width: 1200px;
+    margin: auto;
+    z-index: 10;
+    width: 100%;
+
+    &[class*="flex"] {
+      justify-content: space-between;
+      display: flex;
+    }
+  }
+}
 
 // ------------------------------------------------------------------------ //
 // --------------------------- FORMS -------------------------------------- //
 .mdl-textfield__input {
-  border: 1px solid rgba(0,0,0,.12) !important;
+  border: 1px solid rgba(0, 0, 0, .12) !important;
   padding: 10px 10px 7px 10px !important;
 }
 
@@ -53,108 +56,14 @@ $breakpoint-mobile: 768px;
   margin: auto;
 }
 
-
-// ------------------------------------------------------------------------ //
-// --------------------------- SUMMONER CARD ------------------------------ //
-.summoner-card {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-  justify-content: space-between;
-  background: $ruby-dark-red;
-  transition: box-shadow .3s;
-  text-decoration: none;
-  align-items: center;
-  position: relative;
-  border-radius: 2px;
-  text-align: left;
-  cursor: pointer;
-  color: #ffffff;
-  margin: 5px 0;
-  padding: 10px;
-  display: flex;
-  width: 100%;
-
-  @media screen and (max-width: $breakpoint-mobile) {
-    flex-wrap: wrap;
-  }
-
-  &:hover {
-    box-shadow: 0 0 5px -1px rgba(0,0,0,.3), 0 6px 10px 0 rgba(0,0,0,.3), 0 1px 18px 0 rgba(0,0,0,.1);
-    transition: box-shadow .3s;
-  }
-
-  .summoner-icon {
-    width: 75px;
-    height: 71px;
-    border-radius: 50%;
-    margin: 0 15px 0 10px;
-    @include background-image-styles;
-  }
-
-  [class*="group"] {
-    width: calc((100% - 75px) / 3);
-
-    @media screen and (max-width: $breakpoint-mobile) {
-      width: 50%;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .summoner-name {
-      font-size: 1.25em;
-    }
-
-    .summoner-level {
-      opacity: 0.7;
-    }
-
-    .summoner-rank {
-      display: inline-block;
-      margin: 0 15px 5px 0;
-    }
-
-    .summoner-lp {
-      display: inline-block;
-      opacity: 0.7;
-    }
-
-    .summoner-win-loss {
-      text-align: center;
-      background: #fff;
-      display: flex;
-      height: 17px;
-      width: 130px;
-      color: #000;
-
-      > p {
-        line-height: 1.5em;
-        font-size: 0.8em;
-      }
-
-      .summoner-win-count {
-        background: $ruby-yellow;
-        height: 100%;
-      }
-    }
-
-    .summoner-mastery-champion {
-      margin: 0 5px;
-      float: left;
-
-      .summoner-mastery-champion-level {
-        text-align: center;
-      }
-      .summoner-mastery-champion-icon {
-        @include background-image-styles;
-        border-radius: 50%;
-        height: 40px;
-        width: 40px;
-      }
-      .summoner-mastery-champion-points {
-        text-align: center;
-        font-size: 0.7em;
-      }
-    }
+[class*="button"] {
+  &[class*="--follow"] {
+    position: absolute;
+    right: -15px;
+    color: #fff;
+    top: -50px;
   }
 }
+
+@import 'summoner-card';
+@import 'summoner-show';

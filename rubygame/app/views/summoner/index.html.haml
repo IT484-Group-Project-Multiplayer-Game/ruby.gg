@@ -1,4 +1,3 @@
-
 %div{:class => "mdl-grid content-center"}
   -# Search a summoner
   %div{:class => "group"}
@@ -6,8 +5,6 @@
       %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
         %input{:class => "mdl-textfield__input", :type => "text", :id => "search-summoner"}
         %label{:class => "mdl-textfield__label", :for => "search-summoner"}
-          -# The following icon weirdly creates a space if included.
-          -# If we want the icon, this should be revisited later
           %i{:class => "material-icons"} search
           %span Search for a summoner
 
@@ -19,7 +16,8 @@
     - tier = rankInfo[:tier]
     - rank = rankInfo[:rank]
     - lp = rankInfo[:leaguePoints]
-    %div{:class => "summoner-card"}
+
+    %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
       %div{:class => "summoner-icon", :style => "background-image: url('#{icon}')"}
   
       %div{:class => "group"}
@@ -49,7 +47,7 @@
         - secondMastery = @client.champion.points(champion_mastery[1] ['championPoints'])
         - thirdLevel = champion_mastery[2]['championLevel']
         - thirdMastery = @client.champion.points(champion_mastery[2] ['championPoints'])
-        -# From top 3 to top 1 (in that order)
+
         -# For each loop here
         %div{:class => "summoner-mastery-champion"}
           %p{:class => "summoner-mastery-champion-level"} #{firstLevel}
