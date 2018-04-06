@@ -3,9 +3,12 @@
 // ------------------------------------------------------------------------ //
 // --------------------------- RECENT GAMES CARD -------------------------- //
 [class*="recent-game-card"] {
+  justify-content: space-between;
+  align-items: center;
   border-radius: 2px;
+  padding: 10px 20px;
   cursor: pointer;
-  width: 100%;
+  display: flex;
 
   &[class*="--victory"] {
     background-color: $color-victory;
@@ -14,25 +17,52 @@
     background-color: $color-defeat;
   }
 
-  .card-header {
-    text-align: right;
-    padding: 5px 10px;
-    background-color: rgba(255, 255, 255, 0.5);
-    > p { margin: 0; }
-  }
-
-  .card-body {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   [class*="group"] {
+    &[class*="--game-information"] {
+      p {
+        margin: 0;
+      }
+    }
+
+    &[class*="--icon"] {
+      .champion {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        top: -30px;
+      }
+    }
+
     &[class*="--items"] {
-      display: flex;
       flex-wrap: wrap;
-      width: 25%;
+      display: flex;
+      width: 200px;
+
+      .icon--item {
+        height: 40px;
+        width: 40px;
+        margin: 3px;
+      }
+    }
+
+    &[class*="--subgroup"] {
+      display: inline-block;
+    }
+
+    &[class*="--summoners"] {
+      .other-summoner {
+        p {
+          display: inline-block;
+          margin: 0;
+          vertical-align: center;
+        }
+        .icon--other-summoners {
+          display: inline-block;
+          height: 30px;
+          width: 30px;
+          margin: 5px;
+        }
+      }
     }
   }
 }

@@ -75,6 +75,7 @@
             - gameDate = "3 days ago"
             - gameLength = 34
             - gameStatus = "victory"
+            - gameChampion = "Galio"
             - gameLevel = 10
             - gameType = "Normals Summoner's Rift"
             - gameKills = 4
@@ -85,32 +86,82 @@
             - gameCS = 232
             - gameGold = 45100
             %div{:class => "recent-game-card--#{gameStatus}"}
-                %div{:class => "card-header"}
-                    %p{:class => ""} #{gameDate} | #{gameLength} minutes | #{gameStatus}
+                %div{:class => "group--game-information"}
+                    %p{:class => "game-type"} #{gameType}
+                    %p{:class => ""} #{gameStatus}
+                    %p{:class => ""} #{gameDate}
+                    %p{:class => ""} #{gameLength} minutes
 
-                %div{:class => "card-body"}
-                    %div{:class => "group--icon"}
-                        %div{:class => "icon--circle"}
-                        %p{:class => "level"} #{gameLevel}
 
-                    %div{:class => "group"}
-                        %p{:class => "game-type"} #{gameType}
-                        %div{:class => "group"}
-                            %div{:class => "icon--smaller"} summoners 1
-                            %div{:class => "icon--smaller"} summoners 2
-                        %div{:class => "group"}
-                            %div{:class => "icon--smaller"} mastery 1
-                            %div{:class => "icon--smaller"} mastery 2
+                %div{:class => "group--icon"}
+                    %p{:class => "champion"} #{gameChampion}
+                    %div{:class => "icon--circle"}
+                    %p{:class => "level"} #{gameLevel}
 
-                    %div{:class => "group"}
-                        %p{:class => "game-scores"} #{gameKills}/#{gameDeaths}/#{gameAssists}
-                        %p{:class => "game-kda"} #{gameKDA} KDA (#{gameKDAPercent}%)
-                        %p{:class => ""} #{gameCS} #{gameGold}
+                %div{:class => "group"}
+                    %div{:class => "group--subgroup"}
+                        %div{:class => "icon--smaller"} summoners 1
+                        %div{:class => "icon--smaller"} summoners 2
+                    %div{:class => "group--subgroup"}
+                        %div{:class => "icon--smaller"} mastery 1
+                        %div{:class => "icon--smaller"} mastery 2
 
-                    %div{:class => "group--items"}
-                        %div{:class => "icon--smaller"}
-                        %div{:class => "icon--smaller"}
-                        %div{:class => "icon--smaller"}
-                        %div{:class => "icon--smaller"}
-                        %div{:class => "icon--smaller"}
-                        %div{:class => "icon--smaller"}
+                %div{:class => "group"}
+                    %p{:class => "game-scores"} #{gameKills}/#{gameDeaths}/#{gameAssists}
+                    %p{:class => "game-kda"} #{gameKDA} KDA (#{gameKDAPercent}%)
+                    %p{:class => ""} #{gameCS} #{gameGold}
+
+                %div{:class => "group--items"}
+                    %div{:class => "icon--item"}
+                    %div{:class => "icon--item"}
+                    %div{:class => "icon--item"}
+                    %div{:class => "icon--item"}
+                    %div{:class => "icon--item"}
+                    %div{:class => "icon--item"}
+                    %div{:class => "icon--item"}
+                    %div{:class => "icon--item"}
+
+                %div{:class => "group--summoners"}
+                    %div{:class => "group--subgroup"}
+                        -# for each other summoner
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                    %div{:class => "group--subgroup"}
+                        -# for each other summoner
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
+
+                        %div{:class => "other-summoner"}
+                            %div{:class => "icon--other-summoners"}
+                            %p Doublelift
