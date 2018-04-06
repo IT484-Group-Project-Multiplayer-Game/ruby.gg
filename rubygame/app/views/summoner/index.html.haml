@@ -8,7 +8,7 @@
           %label{:class => "mdl-textfield__label", :for => "search-summoner"}
             %i{:class => "material-icons"} search
             %span Search for a summoner
-  
+
     -@challengerinfo.each do |x|
       - ign = x[:name]
       - level = x[:summonerLevel]
@@ -17,14 +17,16 @@
       - tier = rankInfo[:tier]
       - rank = rankInfo[:rank]
       - lp = rankInfo[:leaguePoints]
-  
+
       %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
-        %div{:class => "summoner-icon", :style => "background-image: url('#{icon}')"}
-    
+        %div{:class => "summoner-icon-container"}
+          %img{:src => asset_path("ranks-borders/#{tier}.png")}/
+          %div{:class => "summoner-icon", :style => "background-image: url('#{icon}')"}
+
         %div{:class => "group"}
           %p{:class => "summoner-name"} #{ign}
           %p{:class => "summoner-level"} LVL : #{level}
-    
+
         %div{:class => "group"}
           %p{:class => "summoner-rank"} #{tier} #{rank}
           %p{:class => "summoner-lp"} #{lp} LP
@@ -36,7 +38,7 @@
             - win_rate = (win.to_f/total) * 100
             %p{:class => "summoner-win-count", :style => "width: #{win_rate}%"} #{win}W
             %p{:class => "summoner-loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
-    
+
         %div{:class => "group--champions"}
           - champion_mastery = @client.summoner.champion_mastery(x[:id], 3)
           -champion_mastery.each do |x|
