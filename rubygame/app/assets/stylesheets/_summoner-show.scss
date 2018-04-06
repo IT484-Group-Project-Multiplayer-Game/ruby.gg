@@ -62,9 +62,11 @@
       &[class*="--icon"] {
         position: relative;
         margin-right: 50px;
+        height: 95px;
         width: 90px;
         @media screen and (max-width: $breakpoint-mobile) {
           margin-right: 15px;
+          height: 75px;
           width: 70px;
         }
 
@@ -96,7 +98,7 @@
           text-align: center;
           background: white;
           position: absolute;
-          bottom: -5px;
+          bottom: -25px;
           height: 20px;
           width: 40px;
           color: #000;
@@ -130,8 +132,20 @@
         }
       }
 
-      .rank-image {
-        height: 50px;
+      .rank-group, .position-group {
+        justify-content: flex-end;
+        flex-direction: row;
+        display: flex;
+        .individual {
+          .title {
+            font-size: $font-small;
+            text-align: center;
+            margin: 0;
+          }
+          .image {
+            height: 50px;
+          }
+        }
       }
 
       .win-loss {

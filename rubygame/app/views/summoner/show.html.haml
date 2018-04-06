@@ -21,8 +21,29 @@
                 %p{:class => "lp"} 23 LP
 
             %div{:class => "group"}
-                %img{:src => asset_path("rank-icons/#{tier}_#{rank}.png"), :class => "rank-image"}/
-                %div{:class => "icon--smaller"} position
+                %div{:class => "rank-group"}
+                    -# for loop here for the ranks
+                    %div{:class => "individual"}
+                        %p{:class => "title"} Solo
+                        %img{:src => asset_path("rank-icons/#{tier}_#{rank}.png"), :class => "image"}/
+
+                    %div{:class => "individual"}
+                        %p{:class => "title"} Flex
+                        %img{:src => asset_path("rank-icons/#{tier}_#{rank}.png"), :class => "image"}/
+
+                    %div{:class => "individual"}
+                        %p{:class => "title"} TT
+                        %img{:src => asset_path("rank-icons/#{tier}_#{rank}.png"), :class => "image"}/
+
+                %div{:class => "position-group"}
+                    -# for loop here for position
+                    %div{:class => "individual"}
+                        %p{:class => "title"} Position
+                        %div{:class => "icon--smaller"}
+
+                    %div{:class => "individual"}
+                        %p{:class => "title"} Position
+                        %div{:class => "icon--smaller"}
 
             %a{:class => "mdl-button mdl-js-button button--follow"} Follow
 
