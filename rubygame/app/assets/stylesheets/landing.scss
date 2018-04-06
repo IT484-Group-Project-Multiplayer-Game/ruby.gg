@@ -65,6 +65,19 @@
   }
 }
 
+
+// ------------------------------------------------------------------------ //
+// --------------------------- Sign In/Sign Up Page -------------------------------------- //
+
+.google_button {
+    display: block;
+    float: right;
+    margin-right: 95px;
+    margin-top: 10px;
+    width: 50%;
+}
+
+
 @import 'summoner-card';
 @import 'summoner-show';
 @import 'recent-game-card';

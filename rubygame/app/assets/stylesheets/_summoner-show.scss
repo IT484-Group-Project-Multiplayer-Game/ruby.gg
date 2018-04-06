@@ -74,6 +74,9 @@
           z-index: 1;
           left: -8px;
           top: -8px;
+          @media screen and (max-width: $breakpoint-mobile) {
+            height: 85px;
+          }
         }
 
         [class*="icon"] {
@@ -99,6 +102,9 @@
           color: #000;
           left: 25px;
           z-index: 2;
+          @media screen and (max-width: $breakpoint-mobile) {
+            left: 15px;
+          }
         }
       }
 
