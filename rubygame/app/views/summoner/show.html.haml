@@ -77,7 +77,7 @@
             - gameStatus = "victory"
             - gameChampion = "Galio"
             - gameLevel = 10
-            - gameType = "Normals Summoner's Rift"
+            - gameType = "Normal"
             - gameKills = 4
             - gameDeaths = 3
             - gameAssists = 5
@@ -100,16 +100,16 @@
 
                 %div{:class => "group"}
                     %div{:class => "group--subgroup"}
-                        %div{:class => "icon--smaller"} summoners 1
-                        %div{:class => "icon--smaller"} summoners 2
+                        %div{:class => "icon--smaller"} sum
+                        %div{:class => "icon--smaller"} sum
                     %div{:class => "group--subgroup"}
-                        %div{:class => "icon--smaller"} mastery 1
-                        %div{:class => "icon--smaller"} mastery 2
+                        %div{:class => "icon--smaller"} mas
+                        %div{:class => "icon--smaller"} mas
 
                 %div{:class => "group"}
                     %p{:class => "game-scores"} #{gameKills}/#{gameDeaths}/#{gameAssists}
                     %p{:class => "game-kda"} #{gameKDA} KDA (#{gameKDAPercent}%)
-                    %p{:class => ""} #{gameCS} #{gameGold}
+                    %p{:class => "game-cs-gold"} #{gameCS} CS #{gameGold}
 
                 %div{:class => "group--items"}
                     %div{:class => "icon--item"}

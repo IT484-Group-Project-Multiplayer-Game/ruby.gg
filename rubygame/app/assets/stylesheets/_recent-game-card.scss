@@ -6,9 +6,20 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 2px;
-  padding: 10px 20px;
+  padding: 15px 40px;
   cursor: pointer;
   display: flex;
+
+  .game-scores {
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .game-kda {
+    text-align: center;
+  }
+  .game-cs-gold {
+    text-align: center;
+  }
 
   &[class*="--victory"] {
     background-color: $color-victory;
@@ -25,6 +36,8 @@
     }
 
     &[class*="--icon"] {
+      margin: 0 20px;
+
       .champion {
         position: absolute;
         text-align: center;
@@ -51,16 +64,18 @@
 
     &[class*="--summoners"] {
       .other-summoner {
+        align-items: center;
+        margin-left: 5px;
+        display: flex;
+
         p {
-          display: inline-block;
           margin: 0;
-          vertical-align: center;
         }
+
         .icon--other-summoners {
-          display: inline-block;
+          margin: 2px 5px;
           height: 30px;
           width: 30px;
-          margin: 5px;
         }
       }
     }
