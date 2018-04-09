@@ -33,6 +33,31 @@
   }
 }
 
+
+// ------------------------------------------------------------------------ //
+// --------------------------- HEADER ------------------------------------- //
+.app-logo {
+  margin-left: -100px;
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  left: 50%;
+
+  > img {
+    margin-right: 5px;
+    height: 35px;
+  }
+
+  .app-name {
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #fff;
+  }
+}
+
+
 // ------------------------------------------------------------------------ //
 // --------------------------- FORMS -------------------------------------- //
 .mdl-textfield__input {
