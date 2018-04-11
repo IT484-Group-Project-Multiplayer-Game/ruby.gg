@@ -119,6 +119,8 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-twitch (0.2.0)
+      omniauth-oauth2 (~> 1.1)
     public_suffix (3.0.2)
     rack (1.6.9)
     rack-test (0.6.3)
@@ -225,6 +227,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-google-oauth2 (~> 0.2.1)
+  omniauth-twitch
   rails (= 4.2.6)
   redis-rails (~> 5.0, >= 5.0.2)
   ruby_gg (~> 0.1.4.5)
