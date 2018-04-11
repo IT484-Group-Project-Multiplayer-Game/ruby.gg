@@ -1,15 +1,16 @@
-%p
-  - if current_user
-    Signed in as
-    
-    %strong= @user.name
-    %p
-      Provider:
-      %strong=@user.provider
-    %p
-      UserID:
-      %strong=@user.uid
+%div{:class => "user_info"}
+  %p
+    - if current_user
+      Signed in as
       
-    = link_to "Sign out", signout_path, id: "sign_out"
+      %strong= @user.name
+      %p
+        Provider:
+        %strong=@user.provider
+      %p
+        UserID:
+        %strong=@user.uid
+        
+      = link_to "Sign out", signout_path, id: "sign_out"
     
     
