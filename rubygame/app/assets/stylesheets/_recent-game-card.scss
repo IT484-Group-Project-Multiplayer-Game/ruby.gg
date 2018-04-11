@@ -1,0 +1,83 @@
+@import 'variables';
+
+// ------------------------------------------------------------------------ //
+// --------------------------- RECENT GAMES CARD -------------------------- //
+[class*="recent-game-card"] {
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+  padding: 15px 40px;
+  cursor: pointer;
+  display: flex;
+
+  .game-scores {
+    font-size: 1.5em;
+    text-align: center;
+  }
+  .game-kda {
+    text-align: center;
+  }
+  .game-cs-gold {
+    text-align: center;
+  }
+
+  &[class*="--victory"] {
+    background-color: $color-victory;
+  }
+  &[class*="--defeat"] {
+    background-color: $color-defeat;
+  }
+
+  [class*="group"] {
+    &[class*="--game-information"] {
+      p {
+        margin: 0;
+      }
+    }
+
+    &[class*="--icon"] {
+      margin: 0 20px;
+
+      .champion {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        top: -30px;
+      }
+    }
+
+    &[class*="--items"] {
+      flex-wrap: wrap;
+      display: flex;
+      width: 200px;
+
+      .icon--item {
+        height: 40px;
+        width: 40px;
+        margin: 3px;
+      }
+    }
+
+    &[class*="--subgroup"] {
+      display: inline-block;
+    }
+
+    &[class*="--summoners"] {
+      .other-summoner {
+        align-items: center;
+        margin-left: 5px;
+        display: flex;
+
+        p {
+          margin: 0;
+        }
+
+        .icon--other-summoners {
+          margin: 2px 5px;
+          height: 30px;
+          width: 30px;
+        }
+      }
+    }
+  }
+}
