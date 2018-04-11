@@ -22,6 +22,10 @@
           -#spacer to push rest to the right
           %div{:class => "mdl-layout-spacer"}
 
+          %div{:class => "app-logo"}
+            %img{:src => asset_path("rubygg-logo-white.svg")}/
+            = link_to "ruby.gg", root_path, :class => "app-name"
+
           -#start search form
           - unless current_page?(root_path)
             %div{:class => "mdl-textfield mdl-js-textfield mdl-textfield--expandable custom-search-header"}
