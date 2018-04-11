@@ -24,12 +24,14 @@
 
           -#start search form
           - unless current_page?(root_path)
-            %div{:class => "mdl-textfield mdl-js-textfield mdl-textfield--expandable custom-search-header"}
-              %label{:class => "mdl-button mdl-js-button mdl-button--icon", :for => "search-expandable"}
-                %i{:class => "material-icons"} search
-              %div{:class => "mdl-textfield__expandable-holder"}
-                %input{:class => "mdl-textfield__input", :type => "text", :id => "search-expandable"}
-                %label{:class => "mdl-textfield__label", :for => "search-expandable"} Search text
+            -# Search a summoner
+            = form_tag(summoner_search_path, :method => "get", id: "search-form") do
+              %div{:class => "mdl-textfield mdl-js-textfield mdl-textfield--expandable custom-search-header"}
+                %label{:class => "mdl-button mdl-js-button mdl-button--icon", :for => "search-expandable"}
+                  %i{:class => "material-icons"} search
+                %div{:class => "mdl-textfield__expandable-holder"}
+                  = text_field_tag :search, '', :class => 'mdl-textfield__input', :id => 'search-expandable'
+                  %label{:class => "mdl-textfield__label", :for => "search-summoner"} Search for a summoner
 
       -#Menu
       %div{:class => "mdl-layout__drawer"}
