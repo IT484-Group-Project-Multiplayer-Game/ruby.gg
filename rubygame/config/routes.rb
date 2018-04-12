@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   post 'auth/index'
 
   get 'summoner/index'
-  get 'summoner/:ign' => 'summoner#show'
+  get 'summoner/search' => 'summoner#search'
+  get 'summoner/:ign' => 'summoner#show', as: 'summoner_show'
   
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
