@@ -1,27 +1,38 @@
 %div{:class => "mdl-grid content-center"}
-
-  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
-
-  %div{:class => "mdl-cell mdl-cell--6-col mdl-cell--12-col-phone"}
+  %div{:class => "group"}
     = link_to "I have an account", auth_index_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
     %a{:class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"} I am a new user
-
-    = form_tag User, :method => :post do
-      %div{:class => "mdl-textfield mdl-js-textfield"}
-        %input{:class => "mdl-textfield__input", :type => "text", :id => "user_email"}
-        %label{:class => "mdl-textfield__label", :for => "user_email"} email address
-
-      %div{:class => "mdl-textfield mdl-js-textfield"}
-        %input{:class => "mdl-textfield__input", :type => "password", :id => "user_password"}
-        %label{:class => "mdl-textfield__label", :for => "user_password"} password
-
-      %div{:class => "mdl-textfield mdl-js-textfield"}
-        %input{:class => "mdl-textfield__input", :type => "password", :id => "user_password_confirm"}
-        %label{:class => "mdl-textfield__label", :for => "user_password_confirm"} confirm password
-
-      %input{:class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", :type => "submit", :value => "Create account"}
-
-  %div{:class => "mdl-cell mdl-cell--3-col mdl-cell--0-col-phone"}
   
+%h1 Sign Up
+= form_for @user do |f|
+  - if @user.errors.any?
+    .error_messages
+      %h2 Form is invalid
+      %ul
+        - for message in @user.errors.full_messages
+          %li= message
+  %p
+    = f.label :email
+    %br/
+    = f.text_field :email
+  %p
+    = f.label :password
+    %br/
+    = f.password_field :password
+  %p
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation
+  %p.button= f.submit 
 
   
+%div{:class => "google_button"}
+  - if current_user
+    Signed in as
+    = succeed "!" do
+      %strong= current_user.name
+    = link_to "Sign out", signout_path, id: "sign_out"
+  - else
+    = link_to image_tag('google_image.png'), "/auth/google_oauth2", id: "sign_in"
+    
+    
