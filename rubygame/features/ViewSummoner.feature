@@ -12,6 +12,6 @@ Feature: View more information of a summoner by clicking on the summoner card
 
   Scenario: View a summoner
     Given I am on the RubyGG home page
-    When I follow "Show summoner"
+    When I click on "Show summoner Grig1"
 #    Then I should be on the summoner "TSM Zven" show page
 #    And I should see "TSM Zven"

@@ -9,8 +9,6 @@
             %i{:class => "material-icons"} search
             %span Search for a summoner
 
-    = link_to "test", summoner_show_path(ign), :style => "visibility: hidden; position: absolute"
-
     -@challengerinfo.each do |x|
       - ign = x[:name]
       - level = x[:summonerLevel]
@@ -21,7 +19,7 @@
       - lp = rankInfo[:leaguePoints]
 
       // following link intended for cucumber tests
-      = link_to "Show summoner", summoner_show_path(ign), :style => "visibility: hidden; position: absolute"
+      = link_to "Show summoner #{ign}", summoner_show_path(ign), :style => "visibility: hidden; position: absolute"
 
       %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
         %div{:class => "summoner-icon-container"}
