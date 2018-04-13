@@ -10,8 +10,8 @@ Feature: View more information of a summoner by clicking on the summoner card
 #    Then I should be on the RottenPotatoes home page
 #    And I should see "Men In Black"
 
-  Scenario: View a summoner
-    Given I am on the RubyGG home page
-    When I click on "Show summoner Grig1"
+#  Scenario: View a summoner
+#    Given I am on the RubyGG home page
+#    When I click on "Show summoner Grig1"
 #    Then I should be on the summoner "TSM Zven" show page
 #    And I should see "TSM Zven"
