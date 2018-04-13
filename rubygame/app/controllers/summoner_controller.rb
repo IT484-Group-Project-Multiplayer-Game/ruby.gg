@@ -13,11 +13,16 @@ class SummonerController < ApplicationController
     # @challengerinfo.push(@client.summoner.find('zedberg'))
     # @challengerinfo.push(@client.summoner.find('owlfile'))
   end
-  
+
   def search
-    
+     @searchedSummoner = params[:search]
+     if @searchedSummoner != ''
+        redirect_to summoner_show_path(@searchedSummoner)
+     else
+        redirect_to summoner_index_path
+     end
+     # flash[:notice] = @searchedSummoner
   end
-  
 
   def show
 
