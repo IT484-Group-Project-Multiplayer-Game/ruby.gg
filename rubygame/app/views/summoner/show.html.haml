@@ -1,9 +1,16 @@
 %div{:class => "summoner-show-page"}
-
-    - tier = "CHALLENGER"
-    - rank = 1
-    - win = 23
-    - loss = 12
+    -ign = @summonerIGN
+    -sI = @client.summoner.find(ign)
+    //sI = summonerInfo and sRI = summonerRankInfo
+    -sRI = @client.summoner.rank_info(sI[:id])
+    - username = sI[:name]
+    -icon = @client.summoner.icon(sI[:profileIconId])
+    - level = sI[:summonerLevel]
+    - tier = sRI[:solo][:tier]
+    - lp = sRI[:solo][:leaguePoints]
+    - rank = sRI[:solo][:rank]
+    - win = sRI[:solo][:wins]
+    - loss = sRI[:solo][:losses]
     - total = win + loss
     - win_rate = (win.to_f/total) * 100
 
@@ -12,13 +19,13 @@
         %div{:class => "container--narrow--flex"}
             %div{:class => "group--icon"}
                 %img{:src => asset_path("ranks-borders/#{tier}.png")}/
-                %div{:class => "icon"}
-                %p{:class => "level"} 37
+                %div{:class => "icon",:style => "background-image: url('#{icon}')"}
+                %p{:class => "level"} #{level}
 
             %div{:class => "group--info"}
-                %p{:class => "name"} SKT T1 Faker
+                %p{:class => "name"} #{username}
                 %p{:class => "rank"} #{tier} #{rank}
-                %p{:class => "lp"} 23 LP
+                %p{:class => "lp"} #{lp}
 
             %div{:class => "group"}
                 %div{:class => "rank-group"}
@@ -52,8 +59,8 @@
             %div{:class => "group"}
                 %div{:class => "win-loss"}
                     -# the width would be the count/total
-                    %p{:class => "win-count", :style => "width: #{win_rate}%"} 34W
-                    %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} 23L
+                    %p{:class => "win-count", :style => "width: #{win_rate}%"} #{win}
+                    %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}
                 %p{:class => "kda"} 3.7:2:5 KDA (37%)
 
             -# for each most played champion...
