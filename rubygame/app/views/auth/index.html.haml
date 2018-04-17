@@ -8,9 +8,9 @@
 %h1 Log in
 = form_tag sessions_path do
   %p
-    = label_tag :user_email
+    = label_tag :email
     %br/
-    = text_field_tag :user_email, params[:user_email]
+    = text_field_tag :user_email, params[:email]
   %p
     = label_tag :password
     %br/

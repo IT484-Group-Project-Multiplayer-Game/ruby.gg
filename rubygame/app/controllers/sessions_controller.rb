@@ -7,10 +7,12 @@ class SessionsController < ApplicationController
     if user
      session[:user_id] = user.id
       redirect_to root_url, :notice => "successfull Logged in!"
-      #redirect_to auth_index_path, :notice => "successfull Logged in!"
+    elsif
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to users_show_path
     else
-      flash.now.alert = "Invalid email or password"
-      render "new"
+     redirect_to auth_index_path,:notice=> "Invalid email or password=> please try again"
     end
   end
 
@@ -20,15 +22,15 @@ class SessionsController < ApplicationController
     redirect_to auth_index_path, :notice => "succesfully logged out!"
     
   end
-  #def create
+  #def create_session
     #user = User.from_omniauth(env["omniauth.auth"])
     #session[:user_id] = user.id
     #redirect_to users_show_path
   
   #end
 
-  #def destroy
+  #def destroy_session
     #session[:user_id] = nil
     #redirect_to auth_index_path
-  #end
+ # end
 end
