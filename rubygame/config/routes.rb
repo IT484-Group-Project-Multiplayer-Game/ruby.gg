@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :users
   root :to => 'summoner#index'
   
-  get 'users/new'
   get 'users/show'
 
   get 'auth/index'
@@ -10,7 +9,8 @@ Rails.application.routes.draw do
   post 'auth/index'
 
   get 'summoner/index'
-  get 'summoner/:ign' => 'summoner#show'
+  get 'summoner/search' => 'summoner#search'
+  get 'summoner/:ign' => 'summoner#show', as: 'summoner_show'
   
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
@@ -19,12 +19,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
 
-
-  get 'sessions/new'
-  
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#native_create'
-  delete '/logout',  to: 'sessions#native_destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

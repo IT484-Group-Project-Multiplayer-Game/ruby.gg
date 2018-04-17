@@ -2,12 +2,13 @@
   %div{:class => "mdl-grid content-center"}
     -# Search a summoner
     %div{:class => "group"}
-      %form{:action => "#"}
+      = form_tag(summoner_search_path, :method => "get", id: "search-form") do
         %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
-          %input{:class => "mdl-textfield__input", :type => "text", :id => "search-summoner"}
+          = text_field_tag :search, '', :class => 'mdl-textfield__input'
           %label{:class => "mdl-textfield__label", :for => "search-summoner"}
             %i{:class => "material-icons"} search
             %span Search for a summoner
+          -#= submit_tag "Search", :name => nil
 
     -@challengerinfo.each do |x|
       - ign = x[:name]
