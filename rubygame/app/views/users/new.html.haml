@@ -1,6 +1,6 @@
 %div{:class => "mdl-grid content-center"}
   %div{:class => "group"}
-    = link_to "I have an account", auth_index_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
+    = link_to "I have an account", sessions_new_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
     %a{:class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"} I am a new user
 
 
@@ -24,6 +24,9 @@
     %br/
     = f.password_field :password_confirmation
   %p.button= f.submit
+  
+  
+
   
 %div{:class => "google_button"}
   - if current_user
