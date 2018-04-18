@@ -43,9 +43,4 @@ class UsersController < ApplicationController
         rescue ActiveRecord::RecordNotFound
     end
     
-    #before_filter :require_user
-
-    #def require_user
-        #redirect_to users_path unless current_user
-    #end
 end
