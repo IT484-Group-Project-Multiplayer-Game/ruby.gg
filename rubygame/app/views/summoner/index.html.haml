@@ -4,11 +4,11 @@
     %div{:class => "group"}
       = form_tag(summoner_search_path, :method => "get", id: "search-form") do
         %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
-          = text_field_tag :search, '', :class => 'mdl-textfield__input'
+          = text_field_tag :searchFrHome, '', :class => 'mdl-textfield__input'
           %label{:class => "mdl-textfield__label", :for => "search-summoner"}
             %i{:class => "material-icons"} search
             %span Search for a summoner
-          = submit_tag 'Search', :style => "visibility: hidden; position: absolute"
+          = submit_tag 'find summoner', :style => "visibility: hidden; position: absolute"
 
     -@challengerinfo.each do |x|
       - ign = x[:name]
@@ -18,9 +18,6 @@
       - tier = rankInfo[:tier]
       - rank = rankInfo[:rank]
       - lp = rankInfo[:leaguePoints]
-
-      // following link intended for cucumber tests
-      -#= link_to "Show summoner #{ign}", summoner_show_path(ign), :style => "visibility: hidden; position: absolute"
 
       %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
         %div{:class => "summoner-icon-container"}

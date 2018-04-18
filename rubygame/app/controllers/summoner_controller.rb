@@ -15,12 +15,20 @@ class SummonerController < ApplicationController
   end
 
   def search
-     @searchedSummoner = params[:search]
+     if params[:search]
+        # Searched from header
+        @searchedSummoner = params[:search]
+     else
+        # Searched from landing page
+        @searchedSummoner = params[:searchFrHome]
+     end
+
      if @searchedSummoner != ''
         redirect_to summoner_show_path(@searchedSummoner)
      else
-        redirect_to summoner_index_path
+        redirect_to root_path
      end
+
      # flash[:notice] = @searchedSummoner
   end
 
