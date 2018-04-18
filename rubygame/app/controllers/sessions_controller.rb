@@ -8,6 +8,28 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to auth_index_path
+    redirect_to sessions_new_path
   end
+  
+  def new
+  end
+  
+  def native_create
+    @user = User.authenticate(params[:email], params[:password])
+    if @user
+      session[:user_id] = user.id
+      redirect_to summoner_index_path, :notice => "You are successfully Logged in!"
+    else
+      flash.now.alert = "Invalid email or  invalid password"
+      render "new"
+    end
+  end
+  
+  
+
+  def native_destroy
+    log_out
+    redirect_to sessions_new_path, :notice => "You are successfully Logged out!"
+  end
+  
 end
