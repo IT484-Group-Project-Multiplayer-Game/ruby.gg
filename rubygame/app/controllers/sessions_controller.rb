@@ -7,10 +7,6 @@ class SessionsController < ApplicationController
     if user
      session[:user_id] = user.id
       redirect_to root_url, :notice => "successfull Logged in!"
-    elsif
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-    redirect_to users_show_path
     else
      redirect_to auth_index_path,:notice=> "Invalid email or password=> please try again"
     end
