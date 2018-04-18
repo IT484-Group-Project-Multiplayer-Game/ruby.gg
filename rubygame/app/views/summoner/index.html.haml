@@ -19,6 +19,9 @@
       - rank = rankInfo[:rank]
       - lp = rankInfo[:leaguePoints]
 
+      // following link intended for cucumber tests
+      = link_to "Show summoner #{ign}", summoner_show_path(ign), :style => "visibility: hidden; position: absolute"
+
       %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
         %div{:class => "summoner-icon-container"}
           %img{:src => asset_path("ranks-borders/#{tier}.png")}/
