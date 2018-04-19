@@ -1,23 +1,16 @@
 Given /^I am in the Sign Up page$/ do
- 
+
 end
-When /^(?:|I )fill in the following:$/ do |e1,e2|
-  fields.rows_hash.each do |name, value|
-    When %{I fill in "#{Email}" with "#{brh@gmail.com}"}
-  end
+When /^(?:|I )fill in the following:$/ do |value, field|
+  #fill_in field.to_sym, :with => value
+  #fill_in(field, :with => value)
+  click_button("Create User")
 end
 
-
-When("I should be in smmoners page") do
-  pending # Write code here that turns the phrase above into concrete actions
-end
 
 Then /I should be in smmoners page/ do
-  # Make sure that all the movies in the app are visible in the table
-  #fail "Unimplemented"
+    visit users_path
 end
-
-
 
 Given /^a valid user$/ do
   @user = User.create!({

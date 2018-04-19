@@ -12,4 +12,4 @@ Scenario: login
     |Email|brh@gmail.com|
     |Password|a|
   And I press "Log in"
-  Then I should see "Signed in successfully."
+  Then I should be in smmoners page
