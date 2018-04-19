@@ -10,16 +10,15 @@ class User < ActiveRecord::Base
         end
     end
     
-    attr_accessor :email, :password, :password_confirmation
     attr_accessor :password
     #attr_accessible :email, :password, :password_confirmation
     has_secure_password(validations: false)
     before_save :encrypt_password
     
     validates_confirmation_of :password
-    #validates_presence_of :password, :on => :create
-    #validates_presence_of :email
-    #validates_uniqueness_of :email 
+    validates_presence_of :password, :on => :create
+    validates_presence_of :email
+    validates_uniqueness_of :email 
 
     #validates :email, presence:true, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }, uniqueness:true
     #validates :password, presence:true, length:{within:1..32}, confirmation:true
