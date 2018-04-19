@@ -13,18 +13,19 @@ Rails.application.routes.draw do
   get 'summoner/search' => 'summoner#search'
   get 'summoner/:ign' => 'summoner#show', as: 'summoner_show'
   
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/:provider/callback', to: 'sessions#google_create'
   get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'signout', to: 'sessions#google_destroy', as: 'signout'
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   
-  get 'sessions/new'
+  #get 'sessions/new'
+  #post 'sessions/new'
   
-  get    '/login',   to: 'sessions#new'
-  post   '/login',   to: 'sessions#native_create'
-  delete '/logout',  to: 'sessions#native_destroy'
+  #get    '/login',   to: 'sessions#new'
+  #post   '/login',   to: 'sessions#native_create'
+  #delete '/logout',  to: 'sessions#native_destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
