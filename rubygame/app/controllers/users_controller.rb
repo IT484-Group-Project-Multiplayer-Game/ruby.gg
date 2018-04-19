@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         params.permit!
         @user = User.new(params[:user])
         if @user.save
-          log_in @user
+          #log_in @user
           redirect_to users_new_path, :notice => "Signed up!"
         else
           render "new"
