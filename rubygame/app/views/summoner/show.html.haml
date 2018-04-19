@@ -1,5 +1,6 @@
 %div{:class => "summoner-show-page"}
 
+    - ign = "SKT T1 Faker"
     - tier = "CHALLENGER"
     - rank = 1
     - win = 23
@@ -16,7 +17,7 @@
                 %p{:class => "level"} 37
 
             %div{:class => "group--info"}
-                %p{:class => "name"} SKT T1 Faker
+                %p{:class => "name"} #{ign}
                 %p{:class => "rank"} #{tier} #{rank}
                 %p{:class => "lp"} 23 LP
 
@@ -45,7 +46,7 @@
                         %p{:class => "title"} Position
                         %div{:class => "icon--smaller"}
 
-            %a{:class => "mdl-button mdl-js-button button--follow"} Follow
+            = link_to "Favorite", summoner_favorites_save_path(:ign => ign), :class => "mdl-button mdl-js-button button--follow"
 
     %div{:class => "section--kda-champs"}
         %div{:class => "container--narrow--flex"}

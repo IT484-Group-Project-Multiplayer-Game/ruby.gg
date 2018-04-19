@@ -42,9 +42,8 @@
         %span{:class => "mdl-layout-title"} Ruby.gg
         %nav{:class => "mdl-navigation"}
           = link_to "Home", root_path, :class => "mdl-navigation__link"
-          %a{:class => "mdl-navigation__link", :href => "#"} Link 2
+          = link_to "Favorites", summoner_favorites_index_path, :class => "mdl-navigation__link"
         %nav{:class => "mdl-navigation"}
-          -#%a{:class => "mdl-navigation__link", :href => "/auth/index"} Log in
           = link_to "Log in", sessions_new_path, :class => "mdl-navigation__link"
 
       -# this goes just inside %body:

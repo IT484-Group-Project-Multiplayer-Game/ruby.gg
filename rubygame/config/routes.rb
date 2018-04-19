@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'summoner/index'
   get 'summoner/search' => 'summoner#search'
   get 'summoner/:ign' => 'summoner#show', as: 'summoner_show'
+  get 'summoner/favorites/index' => 'summoner#favoritesIndex', as: 'summoner_favorites_index'
+  get 'summoner/favorites/:ign' => 'summoner#favoritesSave', as: 'summoner_favorites_save'
   
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
