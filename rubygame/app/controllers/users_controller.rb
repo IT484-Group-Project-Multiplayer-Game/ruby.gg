@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     # @user = User.new(params[:user])
      @user = User.new(user_params)
         if @user.save
-        redirect_to root_url, :notice => "user created successfully!"
+        redirect_to auth_index_path, :notice => "user created successfully!"
         else
            render "new"
             
