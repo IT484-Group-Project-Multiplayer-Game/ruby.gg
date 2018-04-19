@@ -6,9 +6,9 @@ I want to create account
 Scenario: create an account
   Given I am in the Sign Up page
   When I fill in the following:
-    |Email|brhane@gmail|
+    |Email|brh@gmail.com|
     |Password|a|
-    | Password confirmation|man|
+    | Password confirmation|a|
   And I press "Create User"
   And I should be in smmoners page
   #Then I should see "Signed in successfully."  

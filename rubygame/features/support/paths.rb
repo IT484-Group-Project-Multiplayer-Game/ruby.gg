@@ -23,6 +23,17 @@ module NavigationHelpers
     when /the login page/
     #user_session_path
     auth_index_path
+    
+    
+    
+    
+    when /logged in page/
+    
+      
+      
+      
+      
+      
     # Here is an example that pulls values out of the Regexp:
     #
     #   when /^(.*)'s profile page$/i
