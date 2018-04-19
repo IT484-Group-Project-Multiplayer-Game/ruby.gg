@@ -44,7 +44,7 @@
           = link_to "Home", root_path, :class => "mdl-navigation__link"
           = link_to "Favorites", summoner_favorites_index_path, :class => "mdl-navigation__link"
         %nav{:class => "mdl-navigation"}
-          = link_to "Log in", sessions_new_path, :class => "mdl-navigation__link"
+          = link_to "Log in", auth_index_path, :class => "mdl-navigation__link"
 
       -# this goes just inside %body:
       - if flash[:notice]
