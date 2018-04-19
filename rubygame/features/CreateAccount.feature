@@ -5,7 +5,7 @@ I want to create account
 
 Scenario: create an account
   Given I am in the Sign Up page
-  When I fill in the following:
+  When provide the following:
   | Email                   | Password | Password_confirmation |
   | brh@gmail.com           | a | a |
 

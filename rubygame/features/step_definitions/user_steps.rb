@@ -1,16 +1,35 @@
 Given /^I am in the Sign Up page$/ do
 
 end
-When /^(?:|I )fill in the following:$/ do |value, field|
+When /^(?:|I ) provide the following::$/ do |value, field|
   #fill_in field.to_sym, :with => value
   fill_in(field, :with => value)
-  click_button("Create User")
+  fill_in "Email", :with => "brh@gmail.com"
+  fill_in "Password", :with => "a"
+  fill_in "Password confirmation", :with => "a"
+  click_link("Create User")
+end
+When("provide the following:") do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
 
 Then /I should be in smmoners page/ do
-    visit users_path
+    visit summoner_index_path
 end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #the code below should be for login
