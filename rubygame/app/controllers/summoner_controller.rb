@@ -32,7 +32,6 @@ class SummonerController < ApplicationController
     @favoriteSummoner = Favorites.find_by uid: current_user.uid
   end
 
-  # For saving favorite summoners
   def favoritesSave
     @summoner = params[:ign]
 
