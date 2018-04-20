@@ -18,12 +18,12 @@ class SessionsController < ApplicationController
   
   def create
     user = User.authenticate(params[:email], params[:password])
+
     if user
       session[:user_id] = user.id
       redirect_to summoner_index_path, :notice => "You are successfully Logged in!"
     else
-      flash.now.alert = "Invalid email or  Invalid password"
-      render "new"
+      redirect_to auth_index_path, :notice => "Invalid email or password"
     end
   end
   
