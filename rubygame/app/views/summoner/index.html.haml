@@ -11,13 +11,4 @@
           -#= submit_tag "Search", :name => nil
 
     -@challengerinfo.each do |x|
-      - ign = x[:name]
-      - level = x[:summonerLevel]
-      - icon = @client.summoner.icon(x[:profileIconId])
-      - rankInfo = @client.summoner.get_solo(x[:id])
-      - tier = rankInfo[:tier]
-      - rank = rankInfo[:rank]
-      - lp = rankInfo[:leaguePoints]
-      - champion_mastery = @client.summoner.champion_mastery(x[:id], 3)
-
-      = render :partial => 'partials/summoner_card', :locals => { :ign => ign, :level => level, :icon => icon, :rankInfo => rankInfo, :tier => tier, :rank => rank, :lp => lp, :champion_mastery => champion_mastery }
+      = render :partial => 'partials/summoner_card', :locals => { :x => x }

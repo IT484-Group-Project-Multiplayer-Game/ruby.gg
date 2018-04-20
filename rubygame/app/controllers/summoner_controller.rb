@@ -6,12 +6,6 @@ class SummonerController < ApplicationController
     challenger = @client.challenger.solo_queue(5)
     @challengerinfo = []
     challenger.each {|x| @challengerinfo.push(@client.summoner.find(x[:playerOrTeamName]))}
-    # @challengerinfo.push(@client.summoner.find('rockerturner'))
-    # # @challengerinfo.push(@client.summoner.find('yb50110'))
-    # @challengerinfo.push(@client.summoner.find('Knuckleś'))
-    # @challengerinfo.push(@client.summoner.find('catdg'))
-    # @challengerinfo.push(@client.summoner.find('zedberg'))
-    # @challengerinfo.push(@client.summoner.find('owlfile'))
   end
 
   def search
@@ -29,22 +23,27 @@ class SummonerController < ApplicationController
   end
 
   def favoritesIndex
-    @favoriteSummoner = Favorites.find_by uid: current_user.uid
+    @client = RubyGg::Client.new("RGAPI-89538f52-2141-443c-aaaa-9cb0d44ea380", 'na')
+    favoriteSummoners = Favorite.where(:user => current_user.id).pluck(:summoner)
+    @summonerInfo = []
+    favoriteSummoners.each { |x|
+        @summonerInfo.push(@client.summoner.find(x))
+        }
   end
 
   def favoritesSave
-    @summoner = params[:ign]
+    summoner = params[:ign]
 
     if current_user.blank?
         flash[:notice] = "Please log in to add summoner into Favorites"
         redirect_to summoner_show_path(@summoner)
     else
-        @uid = current_user.uid
+        user = current_user.id
 
-        Favorites.create!(params[:uid, :summoner])
+        Favorite.create!(:user => user, :summoner => summoner)
 
-        flash[:notice] = "Successfully added summoner into Favorites"
-        redirect_to redirect_to summoner_show_path(@summoner)
+        flash[:notice] = "Successfully added summoner #{summoner} into Favorites"
+        redirect_to summoner_show_path(summoner)
     end
   end
 

@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20180420011350) do
 
   create_table "favorites", force: :cascade do |t|
-    t.string   "uid"
+    t.string   "user"
     t.string   "summoner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

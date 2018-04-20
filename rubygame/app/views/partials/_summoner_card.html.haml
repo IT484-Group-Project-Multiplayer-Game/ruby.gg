@@ -1,3 +1,12 @@
+- ign = x[:name]
+- level = x[:summonerLevel]
+- icon = @client.summoner.icon(x[:profileIconId])
+- rankInfo = @client.summoner.get_solo(x[:id])
+- tier = rankInfo[:tier]
+- rank = rankInfo[:rank]
+- lp = rankInfo[:leaguePoints]
+- champion_mastery = @client.summoner.champion_mastery(x[:id], 3)
+
 %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
   %div{:class => "summoner-icon-container"}
     %img{:src => asset_path("ranks-borders/#{tier}.png")}/

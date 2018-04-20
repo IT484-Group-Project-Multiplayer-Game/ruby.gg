@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         @user = User.new(params[:user])
         if @user.save
           #log_in @user
-          redirect_to users_new_path, :notice => "Signed up!"
+          redirect_to auth_index_path, :notice => "Signed up!"
         else
           render "new"
         end
