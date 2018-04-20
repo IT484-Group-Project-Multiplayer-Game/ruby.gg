@@ -1,7 +1,7 @@
 %div{:class => "mdl-grid content-center"}
   %h3{:class => "full-width"} Favorite Summoners
 
-  -@challengerinfo.each do |x|
+  -@favoriteSummoners.each do |x|
     - ign = x[:name]
     - level = x[:summonerLevel]
     - icon = @client.summoner.icon(x[:profileIconId])

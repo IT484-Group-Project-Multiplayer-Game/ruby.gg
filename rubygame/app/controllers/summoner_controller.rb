@@ -29,11 +29,7 @@ class SummonerController < ApplicationController
   end
 
   def favoritesIndex
-    # todo: placeholder info... REMOVE THIS
-    @client = RubyGg::Client.new("RGAPI-89538f52-2141-443c-aaaa-9cb0d44ea380", 'na') #I'll PM you guys the api_key, don't push it to github.
-    challenger = @client.challenger.solo_queue(1)
-    @challengerinfo = []
-    challenger.each {|x| @challengerinfo.push(@client.summoner.find(x[:playerOrTeamName]))}
+    @favoriteSummoner = Favorites.find_by uid: current_user.uid
   end
 
   # For saving favorite summoners
