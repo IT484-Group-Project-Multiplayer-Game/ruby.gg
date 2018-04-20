@@ -42,10 +42,11 @@
         %span{:class => "mdl-layout-title"} Ruby.gg
         %nav{:class => "mdl-navigation"}
           = link_to "Home", root_path, :class => "mdl-navigation__link"
-          %a{:class => "mdl-navigation__link", :href => "#"} Link 2
-        %nav{:class => "mdl-navigation"}
-          -#%a{:class => "mdl-navigation__link", :href => "/auth/index"} Log in
-          = link_to "Log in", auth_index_path, :class => "mdl-navigation__link"
+          - if current_user
+            = link_to "Favorites", summoner_favorites_index_path, :class => "mdl-navigation__link"
+            = link_to "Sign out", signout_path, :class => "mdl-navigation__link"
+          - else
+            = link_to "Log in", auth_index_path, :class => "mdl-navigation__link"
 
       -# this goes just inside %body:
       - if flash[:notice]

@@ -1,0 +1,5 @@
+%div{:class => "mdl-grid content-center"}
+  %h3{:class => "full-width"} Favorite Summoners
+
+  -@summonerInfo.each do |x|
+    = render :partial => 'partials/summoner_card', :locals => { :x => x }
