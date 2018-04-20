@@ -46,7 +46,12 @@
                         %p{:class => "title"} Position
                         %div{:class => "icon--smaller"}
 
-            = link_to "Favorite", summoner_favorites_save_path(:ign => ign), :class => "mdl-button mdl-js-button button--follow"
+            - if @favorite
+                = link_to summoner_favorites_delete_path(:ign => ign), :method => :delete, :class => "mdl-button mdl-js-button button--follow" do
+                    %i{:class => 'material-icons md-light'} star
+            - else
+                = link_to summoner_favorites_save_path(:ign => ign), :method => :post, :class => "mdl-button mdl-js-button button--follow" do
+                    %i{:class => 'material-icons'} star_outline
 
     %div{:class => "section--kda-champs"}
         %div{:class => "container--narrow--flex"}

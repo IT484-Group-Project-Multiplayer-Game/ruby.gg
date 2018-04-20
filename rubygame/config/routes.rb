@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'summoner/search' => 'summoner#search'
   get 'summoner/:ign' => 'summoner#show', as: 'summoner_show'
   get 'summoner/favorites/index' => 'summoner#favoritesIndex', as: 'summoner_favorites_index'
-  get 'summoner/favorites/:ign' => 'summoner#favoritesSave', as: 'summoner_favorites_save'
+  post 'summoner/favorites/:ign' => 'summoner#favoritesSave', as: 'summoner_favorites_save'
+  delete 'summoner/favorites/:ign' => 'summoner#favoritesDelete', as: 'summoner_favorites_delete'
   
   get 'auth/:provider/callback', to: 'sessions#google_create'
   get 'auth/failure', to: redirect('/')

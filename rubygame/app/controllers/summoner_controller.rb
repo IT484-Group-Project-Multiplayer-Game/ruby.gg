@@ -19,7 +19,10 @@ class SummonerController < ApplicationController
   end
 
   def show
-
+    favoriteCheck = Favorite.where(:user => current_user.id, :summoner => params[:ign]).pluck(:summoner)
+    if favoriteCheck != []
+        @favorite = true
+    end
   end
 
   def favoritesIndex
@@ -43,7 +46,22 @@ class SummonerController < ApplicationController
         Favorite.create!(:user => user, :summoner => summoner)
 
         flash[:notice] = "Successfully added summoner #{summoner} into Favorites"
-        redirect_to summoner_show_path(summoner)
+        redirect_to summoner_show_path(:ign => summoner)
+    end
+  end
+
+  def favoritesDelete
+     summoner = params[:ign]
+
+     if current_user.blank?
+        flash[:notice] = "Please log in to remove summoner from Favorites"
+        redirect_to summoner_show_path(@summoner)
+     else
+        @unfavoriteSummoner = Favorite.where(:user => current_user.id, :summoner => summoner)
+        @unfavoriteSummoner.destroy_all
+
+        flash[:notice] = "Successfully removed summoner #{summoner} from Favorites"
+        redirect_to summoner_show_path(:ign => summoner)
     end
   end
 
