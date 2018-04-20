@@ -4,9 +4,10 @@
     = link_to "I am a new user", users_new_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
 
   = form_tag sessions_path do
+
     %div{:class => "mdl-textfield mdl-js-textfield"}
-      = label_tag :email, 'email address', :class => "mdl-textfield__label"
-      = text_field_tag :user_email, params[:email], :class => "mdl-textfield__input", :required => true
+      = label_tag :email, 'email', :class => "mdl-textfield__label"
+      = text_field_tag :email, '', :class => "mdl-textfield__input", :required => true
 
     %div{:class => "mdl-textfield mdl-js-textfield"}
       = label_tag :password, '******', :class => "mdl-textfield__label"
