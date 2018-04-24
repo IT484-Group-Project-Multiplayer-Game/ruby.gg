@@ -1,20 +1,22 @@
 %div{:class => "mdl-grid content-center"}
   %div{:class => "group"}
     %a{:class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--raised mdl-button--colored"} I have an account
-    = link_to "I am a new user", new_user_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
+    = link_to "I am a new user", users_new_path, :class => "mdl-button mdl-js-button mdl-js-ripple-effect"
 
-  = form_tag auth_index_path, :method => :post do
-    %div{:class => "mdl-textfield mdl-js-textfield"}
-      %input{:class => "mdl-textfield__input", :type => "text", :id => "user_email"}
-      %label{:class => "mdl-textfield__label", :for => "user_email"} email address
+  = form_tag sessions_path do
 
     %div{:class => "mdl-textfield mdl-js-textfield"}
-      %input{:class => "mdl-textfield__input", :type => "password", :id => "user_password"}
-      %label{:class => "mdl-textfield__label", :for => "user_password"} ********
+      = label_tag :email, 'email', :class => "mdl-textfield__label"
+      = text_field_tag :email, '', :class => "mdl-textfield__input", :required => true
+
+    %div{:class => "mdl-textfield mdl-js-textfield"}
+      = label_tag :password, '******', :class => "mdl-textfield__label"
+      = password_field_tag :password, '', :class => "mdl-textfield__input", :required => true
 
     %input{:class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent", :type => "submit", :value => "Log in"}
-    
 
+%br
+%br
 %div{:class => "google_button"}
   - if current_user
     Signed in as

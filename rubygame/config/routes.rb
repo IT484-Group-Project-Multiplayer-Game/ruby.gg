@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   root :to => 'summoner#index'
   
+  get 'users/new'
   get 'users/show'
 
   get 'auth/index'
@@ -11,13 +12,23 @@ Rails.application.routes.draw do
   get 'summoner/index'
   get 'summoner/search' => 'summoner#search'
   get 'summoner/:ign' => 'summoner#show', as: 'summoner_show'
+  get 'summoner/favorites/index' => 'summoner#favoritesIndex', as: 'summoner_favorites_index'
+  post 'summoner/favorites/:ign' => 'summoner#favoritesSave', as: 'summoner_favorites_save'
+  delete 'summoner/favorites/:ign' => 'summoner#favoritesDelete', as: 'summoner_favorites_delete'
   
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/:provider/callback', to: 'sessions#google_create'
   get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'signout', to: 'sessions#google_destroy', as: 'signout'
 
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
+  
+  #get 'sessions/new'
+  #post 'sessions/new'
+  
+  #get    '/login',   to: 'sessions#new'
+  #post   '/login',   to: 'sessions#native_create'
+  #delete '/logout',  to: 'sessions#native_destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

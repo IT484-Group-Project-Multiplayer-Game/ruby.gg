@@ -1,24 +1,27 @@
 class UsersController < ApplicationController
-    def index
-    end
     def new
+        @user = User.new
     end
-
+    
     def create
+        params.permit!
+        @user = User.new(params[:user])
+        if @user.save
+          #log_in @user
+          redirect_to auth_index_path, :notice => "Signed up!"
+        else
+          render "new"
+        end
     end
-
-
-    def edit
-    end
-
+  
     def show
         @user ||= User.find(session[:user_id]) if session[:user_id]
         rescue ActiveRecord::RecordNotFound
     end
-
+    
     def update
     end
-
+    
     def destroy
     end
     
@@ -31,7 +34,7 @@ class UsersController < ApplicationController
     end
     
     #before_filter :require_user
-
+    
     #def require_user
         #redirect_to users_path unless current_user
     #end
