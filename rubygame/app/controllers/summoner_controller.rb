@@ -19,10 +19,12 @@ class SummonerController < ApplicationController
   end
 
   def show
-    favoriteCheck = Favorite.where(:user => current_user.id, :summoner => params[:ign]).pluck(:summoner)
-    if favoriteCheck != []
-        @favorite = true
-    end
+      if !current_user.blank?
+        favoriteCheck = Favorite.where(:user => current_user.id, :summoner => params[:ign]).pluck(:summoner)
+        if favoriteCheck != []
+            @favorite = true
+        end
+      end
   end
 
   def favoritesIndex
