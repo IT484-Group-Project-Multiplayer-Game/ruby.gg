@@ -1,11 +1,11 @@
 - ign = x[:name]
 - level = x[:summonerLevel]
-- icon = @client.summoner.icon(x[:profileIconId])
-- rankInfo = @client.summoner.get_solo(x[:id])
+- icon = @@client.summoner.icon(x[:profileIconId])
+- rankInfo = @@client.summoner.solo(x[:name])
 - tier = rankInfo[:tier]
 - rank = rankInfo[:rank]
 - lp = rankInfo[:leaguePoints]
-- champion_mastery = @client.summoner.champion_mastery(x[:id], 3)
+- champion_mastery = @@client.summoner.champion_mastery(x[:id], 3)
 
 %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
   %div{:class => "summoner-icon-container"}
@@ -30,7 +30,7 @@
 
   %div{:class => "group--champions"}
     -champion_mastery.each do |x|
-      - champIcon = @client.champion.icon(@client.champion.get_name(x['championId']))
+      - champIcon = @@client.champion.icon(@@client.champion.get_name(x['championId']))
       - champLevel = x['championLevel']
       - champMastery = @client.champion.points(x['championPoints'])
       -# For each loop here
