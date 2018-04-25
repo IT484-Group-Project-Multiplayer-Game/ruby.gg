@@ -19,6 +19,8 @@ class SummonerController < ApplicationController
   end
 
   def show
+      @client = @@client
+      @summonerIGN = params[:ign]
       if !current_user.blank?
         favoriteCheck = Favorite.where(:user => current_user.id, :summoner => params[:ign]).pluck(:summoner)
         if favoriteCheck != []
