@@ -2,9 +2,10 @@
 class SummonerController < ApplicationController
  
   def index
-    challenger = @@client.challenger.solo_queue(5)
+    @client = @@client
+    challenger = @client.challenger.solo_queue(5)
     @challengerinfo = []
-    challenger.each {|x| @challengerinfo.push(@@client.summoner.find(x[:playerOrTeamName]))}
+    challenger.each {|x| @challengerinfo.push(@client.summoner.find(x[:playerOrTeamName]))}
   end
 
   def search
@@ -27,10 +28,11 @@ class SummonerController < ApplicationController
   end
 
   def favoritesIndex
+    @client = @@client
     favoriteSummoners = Favorite.where(:user => current_user.id).pluck(:summoner)
     @summonerInfo = []
     favoriteSummoners.each { |x|
-        @summonerInfo.push(@@client.summoner.find(x))
+        @summonerInfo.push(@client.summoner.find(x))
         }
   end
 
