@@ -12,6 +12,6 @@
 
     -@challengerinfo.each do |x|
       // following link intended for cucumber tests
-      = link_to "Show summoner #{ign}", summoner_show_path(ign), :style => "visibility: hidden; position: absolute"
+      = link_to "Show summoner #{x[:name]}", summoner_show_path(x[:name]), :style => "visibility: hidden; position: absolute"
 
       = render :partial => 'partials/summoner_card', :locals => { :x => x }

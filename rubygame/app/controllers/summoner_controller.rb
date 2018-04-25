@@ -47,8 +47,8 @@ class SummonerController < ApplicationController
     summoner = params[:ign]
 
     if current_user.blank?
-        flash[:notice] = "Please log in to add summoner into Favorites"
-        redirect_to summoner_show_path(@summoner)
+        flash[:notice] = "Please log in to add summoner #{summoner} into Favorites"
+        redirect_to summoner_show_path(summoner)
     else
         user = current_user.id
 
