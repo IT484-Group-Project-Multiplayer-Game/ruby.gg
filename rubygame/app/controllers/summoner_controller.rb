@@ -1,8 +1,8 @@
-require "ruby_gg"
+
 class SummonerController < ApplicationController
  
   def index
-    @client = RubyGg::Client.new("RGAPI-89538f52-2141-443c-aaaa-9cb0d44ea380", 'na') #I'll PM you guys the api_key, don't push it to github. 
+    @client = @@client
     challenger = @client.challenger.solo_queue(5)
     @challengerinfo = []
     challenger.each {|x| @challengerinfo.push(@client.summoner.find(x[:playerOrTeamName]))}
@@ -26,6 +26,8 @@ class SummonerController < ApplicationController
   end
 
   def show
+      @client = @@client
+      @summonerIGN = params[:ign]
       if !current_user.blank?
         favoriteCheck = Favorite.where(:user => current_user.id, :summoner => params[:ign]).pluck(:summoner)
         if favoriteCheck != []
@@ -35,7 +37,7 @@ class SummonerController < ApplicationController
   end
 
   def favoritesIndex
-    @client = RubyGg::Client.new("RGAPI-89538f52-2141-443c-aaaa-9cb0d44ea380", 'na')
+    @client = @@client
     favoriteSummoners = Favorite.where(:user => current_user.id).pluck(:summoner)
     @summonerInfo = []
     favoriteSummoners.each { |x|
@@ -71,7 +73,7 @@ class SummonerController < ApplicationController
 
         flash[:notice] = "Successfully removed summoner #{summoner} from Favorites"
         redirect_to summoner_show_path(:ign => summoner)
-    end
+     end
   end
 
 end
