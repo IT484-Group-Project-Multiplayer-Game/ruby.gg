@@ -8,7 +8,7 @@ Feature: Search for a summoner by the summoner's name on landing page
     Then I should be on the RubyGG home page
     And I should see "Please enter a summoner name"
 
-  Scenario: Search for hideinbush (happy path) on index page
-    When I search for "hideinbush" at "searchFrHome"
-    Then I should be on "hideinbush"'s summoner page
-    And I should see "hideinbush"
+  Scenario: Search for saemi (happy path) on index page
+    When I search for "saemi" at "searchFrHome"
+    Then I should be on "saemi"'s summoner page
+    And I should see "saemi"
