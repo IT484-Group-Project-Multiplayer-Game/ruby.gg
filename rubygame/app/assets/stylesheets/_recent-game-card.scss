@@ -8,6 +8,7 @@
   border-radius: 2px;
   padding: 15px 40px;
   cursor: pointer;
+  margin: 10px 0;
   display: flex;
 
   .game-scores {
@@ -29,8 +30,11 @@
   }
 
   [class*="group"] {
+    width: 10%;
+
     &[class*="--game-information"] {
       p {
+        text-transform: capitalize;
         margin: 0;
       }
     }
@@ -49,7 +53,7 @@
     &[class*="--items"] {
       flex-wrap: wrap;
       display: flex;
-      width: 200px;
+      width: 20%;
 
       .icon--item {
         height: 40px;
@@ -63,6 +67,8 @@
     }
 
     &[class*="--summoners"] {
+      width: 30%;
+
       .other-summoner {
         align-items: center;
         margin-left: 5px;
