@@ -17,9 +17,16 @@ Feature: Go to Log In Page
     Then I should be on the RubyGG home page
     
     
-  Scenario: Fill in email and password and log in
-    Given I am on the Log In page
-    When I fill in "email" with "rashad.khan@mnsu.edu"
+  Scenario: Successful log in
+    Given I have created an account
+    When I fill in "email" with "test@testing.com"
     When I fill in "password" with "test"
     When I press "Log in"
     Then I should be on the RubyGG home page
+    
+  Scenario: Incorrect email and/or password
+    Given I have created an account
+    When I fill in "email" with ""
+    When I fill in "password" with ""
+    When I press "Log in"
+    Then I should be on the Log In page

@@ -12,7 +12,7 @@ Feature: Go to Sign Up Page from Log In Page
     
   Scenario: Create User
     Given I am on the Sign Up page
-    When I fill in "user[email]" with "rashad.khan@mnsu.edu"
+    When I fill in "user[email]" with "test@testing.com"
     When I fill in "user[password]" with "test"
     When I fill in "user[password_confirmation]" with "test"
     When I press "Create account"
