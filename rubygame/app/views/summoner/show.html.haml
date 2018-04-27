@@ -1,82 +1,97 @@
-%div{:class => "summoner-show-page"}
-    - summonerInfo = @client.summoner.find(@summonerIGN)
-    - ign = summonerInfo[:name]
-    - icon = @client.summoner.icon(summonerInfo[:profileIconId])
-    - level = summonerInfo[:summonerLevel]
-    - rankInfo = @client.summoner.solo(@summonerIGN)
-    - tier = rankInfo[:tier]
-    - rank = rankInfo[:rank]
-    - lp = rankInfo[:leaguePoints]
-    - win = rankInfo[:wins]
-    - loss = rankInfo[:losses]
-    - total = win + loss
-    - win_rate = (win.to_f/total) * 100
-    - ranks = @client.summoner.rank_info(@summonerIGN)
-    - positions = @client.summoner.top_positions(@summonerIGN)
-    - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
-    - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
-    -# change the background image of section
-    %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
-        %div{:class => "container--narrow--flex"}
-            %div{:class => "group--icon"}
-                %img{:src => asset_path("ranks-borders/#{tier}.png")}/
-                %div{:class => "icon", :style => "background-image: url('#{icon}')"}
-                %p{:class => "level"} #{level}
-
-            %div{:class => "group--info"}
-                %p{:class => "name"} #{ign}
-                %p{:class => "rank"} #{tier} #{rank}
-                %p{:class => "lp"} #{lp} LP
-
-            %div{:class => "group"}
-                %div{:class => "rank-group"}
-                    - ranks.each do |r|
-                        - t = r[:tier]
-                        - rn = r[:rank]
-                        -if r[:queueType].eql?'RANKED_SOLO_5x5'
-                            - title = 'SOLO'
-                        -elsif r[:queueType].eql?'RANKED_FLEX_SR'
-                            - title = 'FLEX'
-                        -elsif r[:queueType].eql?'RANKED_FLEX_TT'
-                            -title = 'TT'
-                        %div{:class => "individual"}
-                            %p{:class => "title"} #{title}
-                            %img{:src => asset_path("rank-icons/#{t}_#{rn}.png"), :class => "image"}/
-
-                %div{:class => "position-group"}
-                    - positions.each do |pos|
-                        -position = pos
-                        %div{:class => "individual"}
-                            %p{:class => "title"} #{position}
-                            %img{:src => asset_path("positions/#{position}.png"), :class => "image"}/
-
-            - if @favorite
-                = link_to summoner_favorites_delete_path(:ign => ign), :method => :delete, :class => "mdl-button mdl-js-button button--follow" do
-                    %i{:class => 'material-icons md-light'} star
-            - else
-                = link_to summoner_favorites_save_path(:ign => ign), :method => :post, :class => "mdl-button mdl-js-button button--follow" do
-                    %i{:class => 'material-icons'} star_outline
-
-    %div{:class => "section--kda-champs"}
-        %div{:class => "container--narrow--flex"}
-            %div{:class => "group"}
-                %div{:class => "win-loss"}
-                    -# the width would be the count/total
-                    %p{:class => "win-count", :style => "width: #{win_rate}%"} #{win}W
-                    %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
-                %p{:class => "kda"} 3.7:2:5 KDA (37%)
-
-            - masteries.each do |champ|
-                - champIcon = @client.champion.icon(@client.champion.get_name(champ[:championId]))
-                - points = @client.champion.points(champ[:championPoints])
+- cache "summoner-show-page/#{@summonerIGN}", expires_in: 1.minute do
+    %div{:class => "summoner-show-page"}
+        - summonerInfo = @client.summoner.find(@summonerIGN)
+        - ign = summonerInfo[:name]
+        - icon = @client.summoner.icon(summonerInfo[:profileIconId])
+        - level = summonerInfo[:summonerLevel]
+        - rankInfo = @client.summoner.solo(@summonerIGN)
+        - if rankInfo != {}
+            - tier = rankInfo[:tier]
+            - rank = rankInfo[:rank]
+            - lp = rankInfo[:leaguePoints]
+            - win = rankInfo[:wins]
+            - loss = rankInfo[:losses]
+            - total = win + loss
+            - win_rate = (win.to_f/total) * 100
+            - ranks = @client.summoner.rank_info(@summonerIGN)
+            - positions = @client.summoner.top_positions(@summonerIGN)
+            - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
+            - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
+        - else
+            - tier = 'UNRANKED'
+            - rank = ''
+            - lp = '-'
+            - win = 0
+            - loss = 0
+            - total = win + loss
+            - win_rate = (win.to_f/total) * 100
+            - positions = @client.summoner.top_positions(@summonerIGN)
+            - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
+            - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
+        -# change the background image of section
+        %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
+            %div{:class => "container--narrow--flex"}
+                %div{:class => "group--icon"}
+                    - if tier != 'UNRANKED'
+                        %img{:src => asset_path("ranks-borders/#{tier}.png")}/
+                    %div{:class => "icon", :style => "background-image: url('#{icon}')"}
+                    %p{:class => "level"} #{level}
+    
+                %div{:class => "group--info"}
+                    %p{:class => "name"} #{ign}
+                    %p{:class => "rank"} #{tier} #{rank}
+                    %p{:class => "lp"} #{lp} LP
+    
                 %div{:class => "group"}
-                    %div{:class => "most-played-champion"}
-                        %div{:class => "icon--smaller",:style => "background-image: url('#{champIcon}')"}
-                        %p{:class => "win-loss-count"} #{points}
-
-    %div{:class => "section--recent-games"}
-        %div{:class => "container--narrow"}
-            - matches.each do |m|
-                = render :partial => 'partials/summoner_games', :locals => { :m => m }
+                    %div{:class => "rank-group"}
+                    - unless ranks.nil?
+                        - ranks.each do |r|
+                            - t = r[:tier]
+                            - rn = r[:rank]
+                            -if r[:queueType].eql?'RANKED_SOLO_5x5'
+                                - title = 'SOLO'
+                            -elsif r[:queueType].eql?'RANKED_FLEX_SR'
+                                - title = 'FLEX'
+                            -elsif r[:queueType].eql?'RANKED_FLEX_TT'
+                                -title = 'TT'
+                            %div{:class => "individual"}
+                                %p{:class => "title"} #{title}
+                                %img{:src => asset_path("rank-icons/#{t}_#{rn}.png"), :class => "image"}/
     
+                    %div{:class => "position-group"}
+                        - positions.each do |pos|
+                            -position = pos
+                            %div{:class => "individual"}
+                                %p{:class => "title"} #{position}
+                                %img{:src => asset_path("positions/#{position}.png"), :class => "image"}/
     
+                - if @favorite
+                    = link_to summoner_favorites_delete_path(:ign => ign), :method => :delete, :class => "mdl-button mdl-js-button button--follow" do
+                        %i{:class => 'material-icons md-light'} star
+                - else
+                    = link_to summoner_favorites_save_path(:ign => ign), :method => :post, :class => "mdl-button mdl-js-button button--follow" do
+                        %i{:class => 'material-icons'} star_outline
+    
+        %div{:class => "section--kda-champs"}
+            %div{:class => "container--narrow--flex"}
+                %div{:class => "group"}
+                    %div{:class => "win-loss"}
+                        -# the width would be the count/total
+                        %p{:class => "win-count", :style => "width: #{win_rate}%"} #{win}W
+                        %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
+                    %p{:class => "kda"} 3.7:2:5 KDA (37%)
+    
+                - masteries.each do |champ|
+                    - champIcon = @client.champion.icon(@client.champion.get_name(champ[:championId]))
+                    - points = @client.champion.points(champ[:championPoints])
+                    %div{:class => "group"}
+                        %div{:class => "most-played-champion"}
+                            %div{:class => "icon--smaller",:style => "background-image: url('#{champIcon}')"}
+                            %p{:class => "win-loss-count"} #{points}
+    
+        %div{:class => "section--recent-games"}
+            %div{:class => "container--narrow"}
+                - matches.each do |m|
+                    = render :partial => 'partials/summoner_games', :locals => { :m => m }
+        
+        
