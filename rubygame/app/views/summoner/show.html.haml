@@ -44,19 +44,19 @@
     
                 %div{:class => "group"}
                     %div{:class => "rank-group"}
-                    - unless ranks.nil?
-                        - ranks.each do |r|
-                            - t = r[:tier]
-                            - rn = r[:rank]
-                            -if r[:queueType].eql?'RANKED_SOLO_5x5'
-                                - title = 'SOLO'
-                            -elsif r[:queueType].eql?'RANKED_FLEX_SR'
-                                - title = 'FLEX'
-                            -elsif r[:queueType].eql?'RANKED_FLEX_TT'
-                                -title = 'TT'
-                            %div{:class => "individual"}
-                                %p{:class => "title"} #{title}
-                                %img{:src => asset_path("rank-icons/#{t}_#{rn}.png"), :class => "image"}/
+                        - unless ranks.nil?
+                            - ranks.each do |r|
+                                - t = r[:tier]
+                                - rn = r[:rank]
+                                -if r[:queueType].eql?'RANKED_SOLO_5x5'
+                                    - title = 'SOLO'
+                                -elsif r[:queueType].eql?'RANKED_FLEX_SR'
+                                    - title = 'FLEX'
+                                -elsif r[:queueType].eql?'RANKED_FLEX_TT'
+                                    -title = 'TT'
+                                %div{:class => "individual"}
+                                    %p{:class => "title"} #{title}
+                                    %img{:src => asset_path("rank-icons/#{t}_#{rn}.png"), :class => "image"}/
     
                     %div{:class => "position-group"}
                         - positions.each do |pos|
