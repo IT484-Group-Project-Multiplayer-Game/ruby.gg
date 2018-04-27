@@ -91,7 +91,7 @@
     
         %div{:class => "section--recent-games"}
             %div{:class => "container--narrow"}
-                - matches.each do |m|
-                    = render :partial => 'partials/summoner_games', :locals => { :m => m }
+                - (0...5).each do |x|
+                    = render :partial => 'partials/summoner_games', :locals => { :m => matches[x] }
         
         
