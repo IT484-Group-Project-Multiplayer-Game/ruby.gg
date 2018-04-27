@@ -29,8 +29,9 @@ class SummonerController < ApplicationController
   def show
       @client = @@client
       @summonerIGN = params[:ign]
+
       if !current_user.blank?
-        favoriteCheck = Favorite.where(:user => current_user.id, :summoner => params[:ign]).pluck(:summoner)
+        favoriteCheck = Favorite.where(:user => current_user.id, :summoner => @summonerIGN).pluck(:summoner)
         if favoriteCheck != []
             @favorite = true
         end
@@ -55,10 +56,14 @@ class SummonerController < ApplicationController
     else
         user = current_user.id
 
-        Favorite.create!(:user => user, :summoner => summoner)
-
-        flash[:notice] = "Successfully added summoner #{summoner} into Favorites"
-        redirect_to summoner_show_path(:ign => summoner)
+        if Favorite.where(:user => current_user.id, :summoner => summoner).pluck(:summoner) == []
+            Favorite.create!(:user => user, :summoner => summoner)
+            flash[:notice] = "Successfully added summoner #{summoner} into Favorites"
+            redirect_to summoner_show_path(:ign => summoner)
+        else
+            flash[:notice] = "Summoner #{summoner} is already in Favorites"
+            redirect_to summoner_show_path(:ign => summoner)
+        end
     end
   end
 
