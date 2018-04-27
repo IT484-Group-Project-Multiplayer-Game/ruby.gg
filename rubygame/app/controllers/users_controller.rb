@@ -11,11 +11,8 @@ class UsersController < ApplicationController
         @password_confirmation = params[:user][:password_confirmation]
         if  @email == "" or @password == "" or @password_confirmation == ""
             redirect_to users_new_path, :notice => "Fill in the Email, Password, and Password Confirmation!"
-            
-        
         elsif @user.save
             redirect_to auth_index_path, :notice => "Signed up!"
-        
         end
     end
   

@@ -17,6 +17,7 @@ Feature: Go to Sign Up Page from Log In Page
     When I fill in "user[password_confirmation]" with "test"
     When I press "Create account"
     Then I should be on the Log In page
+    Then I should see "Signed up!"
 
   Scenario: Invalid when fields empty
     Given I am on the Sign Up page
@@ -25,3 +26,4 @@ Feature: Go to Sign Up Page from Log In Page
     When I fill in "user[password_confirmation]" with ""
     When I press "Create account"
     Then I should be on the Sign Up page
+    Then I should see "Fill in the Email, Password, and Password Confirmation!"

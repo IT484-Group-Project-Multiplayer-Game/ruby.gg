@@ -23,6 +23,7 @@ Feature: Go to Log In Page
     When I fill in "password" with "test"
     When I press "Log in"
     Then I should be on the RubyGG home page
+    Then I should see "You are successfully Logged in!"
     
   Scenario: Incorrect email and/or password
     Given I have created an account
@@ -30,3 +31,4 @@ Feature: Go to Log In Page
     When I fill in "password" with ""
     When I press "Log in"
     Then I should be on the Log In page
+    Then I should see "Invalid email or password"
