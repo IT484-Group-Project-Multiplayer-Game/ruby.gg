@@ -12,6 +12,11 @@ class SummonerController < ApplicationController
      @searchedSummoner = params[:search]
      if @searchedSummoner != ''
         redirect_to summoner_show_path(@searchedSummoner)
+     elsif
+        if !@@client.summoner.find(@searchedSummoner)
+            flash[:notice] = "The summoner does not exist"
+            redirect_to summoner_index_path
+        end
      else
         flash[:notice] = "Please enter a summoner name"
         redirect_to summoner_index_path
@@ -43,7 +48,7 @@ class SummonerController < ApplicationController
 
     if current_user.blank?
         flash[:notice] = "Please log in to add summoner into Favorites"
-        redirect_to summoner_show_path(@summoner)
+        redirect_to summoner_show_path(:ign => summoner)
     else
         user = current_user.id
 

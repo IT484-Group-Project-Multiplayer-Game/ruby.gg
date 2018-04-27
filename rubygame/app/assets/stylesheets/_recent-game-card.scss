@@ -29,10 +29,10 @@
     background-color: $color-defeat;
   }
 
-  [class*="group"] {
-    width: 10%;
-
+  [class^="group"] {
     &[class*="--game-information"] {
+      width: 10%;
+
       p {
         text-transform: capitalize;
         margin: 0;
@@ -40,7 +40,7 @@
     }
 
     &[class*="--icon"] {
-      margin: 0 20px;
+      width: 10%;
 
       .champion {
         position: absolute;
@@ -50,24 +50,49 @@
       }
     }
 
+    &[class*="--keystones"] {
+      flex-direction: row;
+      display: flex;
+      width: 15%;
+
+      .keystone-1 {
+        background-color: #000;
+      }
+      .keystone-2 {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    &[class*="--stats"] {
+      width: 15%;
+    }
+
     &[class*="--items"] {
       flex-wrap: wrap;
       display: flex;
       width: 20%;
 
       .icon--item {
+        background-color: rgba(0, 0, 0, 0.2);
         height: 40px;
         width: 40px;
         margin: 3px;
+
+        &:nth-of-type(4) {
+          position: relative;
+          top: 20px;
+        }
       }
     }
 
-    &[class*="--subgroup"] {
-      display: inline-block;
-    }
-
     &[class*="--summoners"] {
+      flex-direction: row;
+      display: flex;
       width: 30%;
+
+      .group--subgroup {
+        width: 50%;
+      }
 
       .other-summoner {
         align-items: center;
@@ -84,6 +109,10 @@
           width: 30px;
         }
       }
+    }
+
+    &[class*="--subgroup"] {
+      display: inline-block;
     }
   }
 }

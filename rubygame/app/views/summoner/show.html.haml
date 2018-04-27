@@ -43,7 +43,6 @@
                             %p{:class => "title"} #{title}
                             %img{:src => asset_path("rank-icons/#{t}_#{rn}.png"), :class => "image"}/
 
-
                 %div{:class => "position-group"}
                     - positions.each do |pos|
                         -position = pos
@@ -63,8 +62,8 @@
             %div{:class => "group"}
                 %div{:class => "win-loss"}
                     -# the width would be the count/total
-                    %p{:class => "win-count", :style => "width: #{win_rate}%"} #{win}
-                    %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}
+                    %p{:class => "win-count", :style => "width: #{win_rate}%"} #{win}W
+                    %p{:class => "loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
                 %p{:class => "kda"} 3.7:2:5 KDA (37%)
 
             - masteries.each do |champ|
