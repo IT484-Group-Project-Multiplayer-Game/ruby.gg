@@ -9,17 +9,20 @@ class SummonerController < ApplicationController
   end
 
   def search
-     @searchedSummoner = params[:search]
-     if @searchedSummoner != ''
-        redirect_to summoner_show_path(@searchedSummoner)
-     elsif
-        if !@@client.summoner.find(@searchedSummoner)
-            flash[:notice] = "The summoner does not exist"
-            redirect_to summoner_index_path
-        end
-     else
+     searchedSummoner = params[:search]
+
+     if searchedSummoner == ''
         flash[:notice] = "Please enter a summoner name"
         redirect_to summoner_index_path
+     else
+        summoner = @@client.summoner.find(searchedSummoner)
+
+        if summoner[:status] != nil
+           flash[:notice] = "Summoner does not exist"
+           redirect_to summoner_index_path
+        else
+           redirect_to summoner_show_path(searchedSummoner)
+        end
      end
   end
 
