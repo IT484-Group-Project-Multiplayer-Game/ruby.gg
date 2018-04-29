@@ -28,8 +28,9 @@ class SummonerController < ApplicationController
   def show
       @client = @@client
       @summonerIGN = params[:ign]
+
       if !current_user.blank?
-        favoriteCheck = Favorite.where(:user => current_user.id, :summoner => params[:ign]).pluck(:summoner)
+        favoriteCheck = Favorite.where(:user => current_user.id, :summoner => @summonerIGN).pluck(:summoner)
         if favoriteCheck != []
             @favorite = true
         end
@@ -47,22 +48,28 @@ class SummonerController < ApplicationController
 
   def favoritesSave
     summoner = params[:ign]
-
     if current_user.blank?
         flash[:notice] = "Please log in to add summoner #{summoner} into Favorites"
         redirect_to summoner_show_path(summoner)
     else
         user = current_user.id
 
-        Favorite.create!(:user => user, :summoner => summoner)
+        if Favorite.where(:user => current_user.id, :summoner => summoner).pluck(:summoner) == []
+            Favorite.create!(:user => user, :summoner => summoner)
+            Rails.cache.delete("summoner-show-page/#{summoner}")
+            flash[:notice] = "Successfully added summoner #{summoner} into Favorites"
+            redirect_to summoner_show_path(:ign => summoner)
 
-        flash[:notice] = "Successfully added summoner #{summoner} into Favorites"
-        redirect_to summoner_show_path(:ign => summoner)
+        else
+            flash[:notice] = "Summoner #{summoner} is already in Favorites"
+            redirect_to summoner_show_path(:ign => summoner)
+        end
     end
   end
 
   def favoritesDelete
      summoner = params[:ign]
+     expire_fragment("summoner-show-page/#{summoner}")
 
      if current_user.blank?
         flash[:notice] = "Please log in to remove summoner from Favorites"
@@ -70,7 +77,7 @@ class SummonerController < ApplicationController
      else
         @unfavoriteSummoner = Favorite.where(:user => current_user.id, :summoner => summoner)
         @unfavoriteSummoner.destroy_all
-
+        Rails.cache.delete(params[:page])
         flash[:notice] = "Successfully removed summoner #{summoner} from Favorites"
         redirect_to summoner_show_path(:ign => summoner)
      end
