@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
   
-  @@client = RitoApi::Client.new("RGAPI-89538f52-2141-443c-aaaa-9cb0d44ea380", 'na', true, 180)
+  @@client = RitoApi::Client.new(ENV['league_api_key'], 'na', true, 180)
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
