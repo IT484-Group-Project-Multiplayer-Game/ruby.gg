@@ -6,6 +6,10 @@
         - icon = @client.summoner.icon(summonerInfo[:profileIconId])
         - level = summonerInfo[:summonerLevel]
         - rankInfo = @client.summoner.solo(@summonerIGN)
+        - positions = @client.summoner.top_positions(@summonerIGN)
+        - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
+        - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
+        - backgroundChampion = @client.champion.get_name(masteries[0][:championId])
         - if rankInfo != {}
             - tier = rankInfo[:tier]
             - rank = rankInfo[:rank]
@@ -15,9 +19,7 @@
             - total = win + loss
             - win_rate = (win.to_f/total) * 100
             - ranks = @client.summoner.rank_info(@summonerIGN)
-            - positions = @client.summoner.top_positions(@summonerIGN)
-            - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
-            - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
+            
         - else
             - tier = 'UNRANKED'
             - rank = ''
@@ -26,11 +28,9 @@
             - loss = 0
             - total = win + loss
             - win_rate = (win.to_f/total) * 100
-            - positions = @client.summoner.top_positions(@summonerIGN)
-            - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
-            - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
 
-        %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
+
+        %div{:class => "section--intro", :style => "background-image: url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/#{backgroundChampion}_0.jpg')"}
             %div{:class => "container--narrow--flex"}
                 %div{:class => "group--icon"}
                     - if tier != 'UNRANKED'
