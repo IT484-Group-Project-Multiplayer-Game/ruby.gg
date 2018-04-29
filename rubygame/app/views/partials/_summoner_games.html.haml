@@ -1,7 +1,7 @@
 - cache "#{m[:gameId]}", expires_in: 3.day do
   - matchdata = @client.match.get_match(m[:gameId], 0)
   - playerStats = @client.match.player_stats(m[:gameId], m[:champion], 0)
-  - gameDate = Time.at(matchdata[:gameCreation]).strftime("%B %e, %Y at %I:%M %p")
+  - gameDate = Time.at(matchdata[:gameCreation]/1000).strftime("%B %e, %Y")
   - gameLength = matchdata[:gameDuration]/60.round()
   - gameType = matchdata[:queueId]
   - if matchdata[:queueId] == 420
