@@ -2,14 +2,30 @@
 - level = x[:summonerLevel]
 - icon = @client.summoner.icon(x[:profileIconId])
 - rankInfo = @client.summoner.solo(x[:name])
-- tier = rankInfo[:tier]
-- rank = rankInfo[:rank]
+- if rankInfo != {}
+  - tier = rankInfo[:tier]
+  - rank = rankInfo[:rank]
+  - lp = rankInfo[:leaguePoints]
+  - win = rankInfo[:wins]
+  - loss = rankInfo[:losses]
+  - total = win + loss
+  - win_rate = (win.to_f/total) * 100
+  - ranks = @client.summoner.rank_info(ign)
+- else
+  - tier = 'UNRANKED'
+  - rank = ''
+  - lp = '-'
+  - win = 0
+  - loss = 0
+  - total = win + loss
+  - win_rate = (win.to_f/total) * 100
 - lp = rankInfo[:leaguePoints]
 - champion_mastery = @client.summoner.champion_mastery(x[:name], 3)
 
 %a{:class => "summoner-card", :href => "/summoner/#{ign}"}
   %div{:class => "summoner-icon-container"}
-    %img{:src => asset_path("ranks-borders/#{tier}.png")}/
+    - if tier != 'UNRANKED'
+      %img{:src => asset_path("ranks-borders/#{tier}.png")}/
     %div{:class => "summoner-icon", :style => "background-image: url('#{icon}')"}
 
   %div{:class => "group"}
@@ -20,11 +36,6 @@
     %p{:class => "summoner-rank"} #{tier} #{rank}
     %p{:class => "summoner-lp"} #{lp} LP
     %div{:class => "summoner-win-loss"}
-      -# the width would be the count/total
-      - win = rankInfo[:wins]
-      - loss = rankInfo[:losses]
-      - total = win + loss
-      - win_rate = (win.to_f/total) * 100
       %p{:class => "summoner-win-count", :style => "width: #{win_rate}%"} #{win}W
       %p{:class => "summoner-loss-count", :style => "width: calc(100% - #{win_rate}%)"} #{loss}L
 

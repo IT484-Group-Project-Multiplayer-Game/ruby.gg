@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      redirect_to summoner_index_path, :notice => "You are successfully Logged in!"
+      redirect_to root_path, :notice => "You are successfully logged in!"
     else
       redirect_to auth_index_path, :notice => "Invalid email or password"
     end
