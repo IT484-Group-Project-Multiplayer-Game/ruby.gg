@@ -34,11 +34,10 @@ group :development, :test do
   gem 'cucumber', '2.4.0'
 end
 
-gem 'rito_api', '~> 0.1.2.6'
-
-gem 'bcrypt-ruby', :require => 'bcrypt'
-
 group :test do
   gem 'cucumber-rails', '1.4.3'
   gem 'cucumber-rails-training-wheels'
 end
+
+gem 'rito_api', '~> 0.1.2.6'
+gem 'bcrypt-ruby', :require => 'bcrypt'

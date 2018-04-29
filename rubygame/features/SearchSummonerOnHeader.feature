@@ -1,7 +1,7 @@
 Feature: Search for a summoner by the summoner's name on header
 
   Background: Start from a page not the landing page
-    Given I am on the login page
+    Given I am on the Log In page
 
   Scenario: Search without an input (sad path) on header
     When I search for "" at "search"
