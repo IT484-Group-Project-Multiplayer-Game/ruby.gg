@@ -229,8 +229,6 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    ruby_gg (0.1.4.5)
-      httparty (~> 0.16.1)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
     sass (3.5.6)
@@ -298,7 +296,6 @@ DEPENDENCIES
   redis-rails (~> 5.0, >= 5.0.2)
   rito_api (~> 0.1.2.6)
   rspec-rails
-  ruby_gg (~> 0.1.4.5)
   sass-rails (~> 5.0.3)
   sdoc (~> 0.4.0)
   spring

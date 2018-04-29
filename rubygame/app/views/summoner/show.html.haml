@@ -15,6 +15,7 @@
     - positions = @client.summoner.top_positions(@summonerIGN)
     - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
     - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
+
     -# change the background image of section
     %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
         %div{:class => "container--narrow--flex"}
@@ -110,13 +111,13 @@
                         %p{:class => ""} #{gameStatus}
                         %p{:class => ""} #{gameDate}
                         %p{:class => ""} #{gameLength} Minutes
-    
-    
+
+
                     %div{:class => "group--icon"}
                         %p{:class => "champion"} #{gameChampion}
                         %div{:class => "icon--circle", :style => "background-image: url('#{gameChampionIcon}')"}
                         %p{:class => "level"} #{gameLevel}
-    
+
                     %div{:class => "group"}
                         %div{:class => "group--subgroup"}
                             %div{:class => "icon--smaller", :style => "background-image: url('#{gameSummoner1}')"}
@@ -124,12 +125,12 @@
                         %div{:class => "group--subgroup"}
                             %div{:class => "icon--smaller", :style => "background-image: url('#{gameRunes[0]}')"}
                             %div{:class => "icon--smaller", :style => "background-image: url('#{gameRunes[1]}')"}
-    
+
                     %div{:class => "group"}
                         %p{:class => "game-scores"} #{gameKills}/#{gameDeaths}/#{gameAssists}
                         %p{:class => "game-kda"} #{gameKDA} KDA (#{gameKDAPercent}%)
                         %p{:class => "game-cs-gold"} #{gameCS} CS #{gameGold} G
-    
+
                     %div{:class => "group--items"}
                         %div{:class => "icon--item", :style => "background-image: url('#{items[0]}')"}
                         %div{:class => "icon--item", :style => "background-image: url('#{items[1]}')"}
@@ -138,7 +139,7 @@
                         %div{:class => "icon--item", :style => "background-image: url('#{items[3]}')"}
                         %div{:class => "icon--item", :style => "background-image: url('#{items[4]}')"}
                         %div{:class => "icon--item", :style => "background-image: url('#{items[5]}')"}
-    
+
                     %div{:class => "group--summoners"}
                         %div{:class => "group--subgroup"}
                             - (0...5).each do |x|
@@ -147,8 +148,8 @@
                                 %div{:class => "other-summoner"}
                                     %div{:class => "icon--other-summoners", :style => "background-image: url('#{champion100}')"}
                                     %p #{userName100}
-    
-    
+
+
                         %div{:class => "group--subgroup"}
                             -(5...10).each do |x|
                                 - champion200 = @client.champion.icon(@client.champion.get_name(stats[x][:championId]))
@@ -156,5 +157,3 @@
                                 %div{:class => "other-summoner"}
                                     %div{:class => "icon--other-summoners", :style => "background-image: url('#{champion200}')"}
                                     %p #{userName200}
-    
-    
