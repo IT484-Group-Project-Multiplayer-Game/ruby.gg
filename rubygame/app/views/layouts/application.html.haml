@@ -36,6 +36,7 @@
                 %div{:class => "mdl-textfield__expandable-holder"}
                   = text_field_tag :search, '', :class => 'mdl-textfield__input', :id => 'search-expandable'
                   %label{:class => "mdl-textfield__label", :for => "search-summoner"} Search for a summoner
+                = submit_tag 'find summoner', :style => "visibility: hidden; position: absolute"
 
       -#Menu
       %div{:class => "mdl-layout__drawer"}

@@ -9,20 +9,19 @@ class SummonerController < ApplicationController
   end
 
   def search
-     searchedSummoner = params[:search]
-
-     if searchedSummoner == ''
-        flash[:notice] = "Please enter a summoner name"
-        redirect_to summoner_index_path
+     if params[:search]
+        # Searched from header
+        @searchedSummoner = params[:search]
      else
-        summoner = @@client.summoner.find(searchedSummoner)
+        # Searched from landing page
+        @searchedSummoner = params[:searchFrHome]
+     end
 
-        if summoner[:status] != nil
-           flash[:notice] = "Summoner does not exist"
-           redirect_to summoner_index_path
-        else
-           redirect_to summoner_show_path(searchedSummoner)
-        end
+     if @searchedSummoner != ''
+        redirect_to summoner_show_path(@searchedSummoner)
+     else
+        flash[:notice] = "Please enter a summoner name"
+        redirect_to root_path
      end
   end
 
@@ -50,8 +49,8 @@ class SummonerController < ApplicationController
   def favoritesSave
     summoner = params[:ign]
     if current_user.blank?
-        flash[:notice] = "Please log in to add summoner into Favorites"
-        redirect_to summoner_show_path(:ign => summoner)
+        flash[:notice] = "Please log in to add summoner #{summoner} into Favorites"
+        redirect_to summoner_show_path(summoner)
     else
         user = current_user.id
 
@@ -60,7 +59,7 @@ class SummonerController < ApplicationController
             Rails.cache.delete("summoner-show-page/#{summoner}")
             flash[:notice] = "Successfully added summoner #{summoner} into Favorites"
             redirect_to summoner_show_path(:ign => summoner)
-            
+
         else
             flash[:notice] = "Summoner #{summoner} is already in Favorites"
             redirect_to summoner_show_path(:ign => summoner)
@@ -71,6 +70,7 @@ class SummonerController < ApplicationController
   def favoritesDelete
      summoner = params[:ign]
      expire_fragment("summoner-show-page/#{summoner}")
+
      if current_user.blank?
         flash[:notice] = "Please log in to remove summoner from Favorites"
         redirect_to summoner_show_path(@summoner)
