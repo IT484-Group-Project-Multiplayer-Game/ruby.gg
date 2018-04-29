@@ -9,12 +9,19 @@ class SummonerController < ApplicationController
   end
 
   def search
-     @searchedSummoner = params[:search]
+     if params[:search]
+        # Searched from header
+        @searchedSummoner = params[:search]
+     else
+        # Searched from landing page
+        @searchedSummoner = params[:searchFrHome]
+     end
+
      if @searchedSummoner != ''
         redirect_to summoner_show_path(@searchedSummoner)
      else
         flash[:notice] = "Please enter a summoner name"
-        redirect_to summoner_index_path
+        redirect_to root_path
      end
   end
 
@@ -42,8 +49,8 @@ class SummonerController < ApplicationController
     summoner = params[:ign]
 
     if current_user.blank?
-        flash[:notice] = "Please log in to add summoner into Favorites"
-        redirect_to summoner_show_path(@summoner)
+        flash[:notice] = "Please log in to add summoner #{summoner} into Favorites"
+        redirect_to summoner_show_path(summoner)
     else
         user = current_user.id
 

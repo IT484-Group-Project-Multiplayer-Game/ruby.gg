@@ -4,11 +4,14 @@
     %div{:class => "group"}
       = form_tag(summoner_search_path, :method => "get", id: "search-form") do
         %div{:class => "mdl-textfield mdl-js-textfield center-textfield"}
-          = text_field_tag :search, '', :class => 'mdl-textfield__input'
+          = text_field_tag :searchFrHome, '', :class => 'mdl-textfield__input'
           %label{:class => "mdl-textfield__label", :for => "search-summoner"}
             %i{:class => "material-icons"} search
             %span Search for a summoner
-          -#= submit_tag "Search", :name => nil
+          = submit_tag 'find summoner', :style => "visibility: hidden; position: absolute"
 
     -@challengerinfo.each do |x|
+      // following link intended for cucumber tests
+      = link_to "Show summoner #{x[:name]}", summoner_show_path(x[:name]), :style => "visibility: hidden; position: absolute"
+
       = render :partial => 'partials/summoner_card', :locals => { :x => x }
