@@ -12,11 +12,6 @@ module NavigationHelpers
         summoner_show_path($1)
       when /^my favorite summoners page$/
         summoner_favorites_index_path
-      when /^the login page$/
-        '/auth/index'
-      when /^the signup page$/
-        '/users/new'
-
       when /^the Log In page/
         '/auth/index'
       when /^the Sign Up page/
