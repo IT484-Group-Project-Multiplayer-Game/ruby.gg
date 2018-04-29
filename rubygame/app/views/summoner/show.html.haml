@@ -1,5 +1,7 @@
-- cache "summoner-show-page/#{@summonerIGN}", expires_in: 1.minute do
+
+- cache "summoner-show-page/#{@summonerIGN}", expires_in: 3.minute do
     %div{:class => "summoner-show-page"}
+        -# change the background image of section
         - summonerInfo = @client.summoner.find(@summonerIGN)
         - ign = summonerInfo[:name]
         - icon = @client.summoner.icon(summonerInfo[:profileIconId])
@@ -28,7 +30,7 @@
             - positions = @client.summoner.top_positions(@summonerIGN)
             - masteries = @client.summoner.champion_mastery(@summonerIGN, 3)
             - matches = @client.summoner.recent_matches(@summonerIGN)[:matches]
-        -# change the background image of section
+    
         %div{:class => "section--intro", :style => "background-image: url('http://lolwp.com/wp-content/uploads/2014/07/Gentleman-Gnar.jpg')"}
             %div{:class => "container--narrow--flex"}
                 %div{:class => "group--icon"}
